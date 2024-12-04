@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
-
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +23,7 @@ Route::get('/movies/{id}', [MovieController::class, 'detail']);       // Get mov
 Route::get('/favorites', [MovieController::class, 'favoriteList'])    // User's favorite movies (requires authentication)
     ->middleware('auth:sanctum');                                      // Apply auth middleware for protection
 Route::get('/movies/search', [MovieController::class, 'search']);      // Search for movies
+Route::controller(RegisterController::class)->group(function(){
+    Route::post('register', 'register');
+    Route::post('login', 'login');
+});
