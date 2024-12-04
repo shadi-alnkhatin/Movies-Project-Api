@@ -1,0 +1,39 @@
+.background-container {
+    background-image: url('./assets/images/poster-background.jpg'); /* Use the public folder path */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  
+  .content {
+    z-index: 2;
+    text-align: center;
+  }
+  
+  .hero {
+    margin: 25px 0;
+    max-width: 600px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    color: white;
+    border-radius: 20px;
+  }
+  
+  .hero h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+  }
+  
+  .hero p {
+    margin: 20px 0;
+  }
+  
+  .btn {
+    margin-top: 20px;
+  }
+  
