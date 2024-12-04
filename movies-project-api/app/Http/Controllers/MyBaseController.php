@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
-class BaseController extends Controller
+class MyBaseController extends Controller
 {
     /**
      * success response method.
