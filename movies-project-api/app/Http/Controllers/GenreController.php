@@ -5,18 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 
-class GenreController extends Controller
+class GenreController extends MyBaseController
 {
     //
 
     public function index(){
         $genres = Genre::all();
-        return $genres;
+        return $this->sendResponse($genres, 'Genre Data');
     }
     public function getMoviesBasedGenre($id){
         $genre = Genre::find($id);
         $movies = $genre->movies;
         $genres=Genre::all();
-        return view('filter', compact('movies','genre','genres'));
+        return $this->sendResponse([$genre,$movies,$genres], 'Genres Data');
     }
 }
