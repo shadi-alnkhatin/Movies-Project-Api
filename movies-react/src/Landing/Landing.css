@@ -1,5 +1,9 @@
+
+
+
+/* Landing.css */
 .background-container {
-    background-image: url('./assets/images/poster-background.jpg'); /* Use the public folder path */
+    background-image: url('../assets/images/poster-background.jpg');
     background-size: cover;
     background-position: center;
     min-height: 100vh;
@@ -8,32 +12,45 @@
     justify-content: center;
     align-items: center;
     color: white;
-  }
-  
-  .content {
+}
+
+.content {
     z-index: 2;
     text-align: center;
-  }
-  
-  .hero {
+}
+
+.hero {
     margin: 25px 0;
     max-width: 600px;
     background-color: rgba(0, 0, 0, 0.7);
     padding: 20px;
     color: white;
     border-radius: 20px;
-  }
-  
-  .hero h1 {
+}
+
+.hero h1 {
     font-size: 3.5rem;
     font-weight: 900;
-  }
-  
-  .hero p {
+}
+
+.hero p {
     margin: 20px 0;
-  }
-  
-  .btn {
+}
+
+.btn {
     margin-top: 20px;
-  }
-  
+    background-color: #30579c; 
+    color: var(--white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: var(--fs-button);
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--primary); 
+}

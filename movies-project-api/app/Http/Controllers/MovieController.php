@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\BaseController; // Correct import
+use App\Http\Controllers\MyBaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Movie;
 
 use App\Models\Genre;
 
-class MovieController
+class MovieController extends MyBaseController
 {
     /**
      * Display a listing of the resource.
@@ -31,14 +31,14 @@ class MovieController
             $query->where('genres.id', 3);
         })->get();
 
-        return response()->json([
+        return $this->sendResponse([
             'movies' => $movies,
             'genres' => [
                 'Action' => $action,
                 'Romance' => $romance,
                 'Drama' => $drama
             ]
-        ]);
+            ],'Movies return successfully');
 
     }
 
@@ -49,10 +49,10 @@ class MovieController
     {
         $movie = Movie::findOrFail($id);
 
-        return response()->json([
+        return $this->sendResponse([
             'movie' => $movie,
             'genres' => $movie->genres // Assuming a relationship is defined
-        ]);
+        ],'Movies Details With Genre');
     }
 
     /**
@@ -65,9 +65,9 @@ class MovieController
         // Retrieve all favorite movies for the authenticated user
         $favorites = $user->favorites()->with('movie')->get()->pluck('movie');
 
-        return response()->json([
+        return $this->sendResponse([
             'favorites' => $favorites
-        ]);
+        ],'Faviorate Movies For User');
     }
 
     /**
@@ -80,8 +80,8 @@ class MovieController
             ->orWhere('description', 'LIKE', '%' . $str . '%')
             ->get();
 
-        return response()->json([
+        return $this->sendResponse([
             'search_results' => $movies
-        ]);
+        ],'Search Results');
     }
 }

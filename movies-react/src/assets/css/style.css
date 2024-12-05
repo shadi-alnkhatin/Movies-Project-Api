@@ -7,29 +7,27 @@
   box-sizing: border-box;
 }
 :root {
-  /* colours */
-  --background: #0f1115;
-  --banner-background: #313036;
+  /* Colours */
+  --background: #121826;
+  --banner-background: #2b3a4a;  
   --white-alpha-20: #ffffff33;
-  --on-background: #e5eeff;
-  --on-surface: #eae5ff;
-  --on-surface-variant: #6f6f71;
-  --primary: #db0028;
-  --primary-variant: #d82c4b;
-  --rating-color: #fab700;
-  --surface: #1a1820;
-  --text-color: #959499;
+  --on-background: #e5f1ff;      
+  --on-surface: #d0e3ff;
+  --on-surface-variant: #7f8fa6;  
+  --primary: #1a73e8;            
+  --primary-variant: #1259c7;    
+  --rating-color: #ffd700;       
+  --surface: #1c2733;            
+  --text-color: #9aaab8;         
   --white: #ffffff;
 
-  /* gradient colors */
-  --bottom-overlay: 180deg, rgba(26, 24, 32, 0), rgb(26, 24, 32);
+  /* Gradient colors */
+  --bottom-overlay: 180deg, rgba(28, 39, 51, 0), rgb(28, 39, 51);
 
-  /* TYPOGRAPHY */
-
-  /* font family */
+  /* Typography remains unchanged */
   --ff-dm-sans: "DM Sans", sans-serif;
 
-  /* font size */
+  /* Font size */
   --fs-heading: 4rem;
   --fs-title-lg: 2.6rem;
   --fs-title: 2rem;
@@ -37,12 +35,12 @@
   --fs-button: 1.5rem;
   --fs-label: 1.4rem;
 
-  /* font weight */
+  /* Font weight */
   --weight-bold: 700;
 
-  /* shadow */
+  /* Shadow */
   --shadow-1: 0 1px 4px rgba(0, 0, 0, 0.75);
-  --shadow-2: 0 2px 4px rgba(220, 53, 69, 0.3);
+  --shadow-2: 0 2px 4px rgba(26, 115, 232, 0.3);
 
   /* border radius */
   --radius-4: 4px;
@@ -429,9 +427,7 @@ body {
   transition: var(--transition-short);
 }
 
-.search-wrapper:focus-within .leading-icon {
 
-}
 
 .separator {
   width: 4px;
@@ -555,11 +551,14 @@ visibility: visible;
 
 .movie-card {
   width: 200px;
+
+
 }
 
 .movie-card .card-banner {
   width: 200px;
-  height: 300px;
+
+  white-space: nowrap;
 }
 
 .movie-card .title {
@@ -573,6 +572,7 @@ visibility: visible;
 .movie-card .meta-list {
   display: flex;
   justify-content: space-between;
+  white-space: nowrap;
 }
 
 /*-----------------------------------*\

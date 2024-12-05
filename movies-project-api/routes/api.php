@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
-
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +19,11 @@ use App\Http\Controllers\MovieController;
 
 // Movie API Routes
 Route::get('/movies', [MovieController::class, 'index']);            // List all movies
-Route::get('/movies/{id}', [MovieController::class, 'detail']);       // Get movie details by ID
+Route::get(action: [MovieController::class, 'detail'],uri: '/movies/{id}', );       // Get movie details by ID
 Route::get('/favorites', [MovieController::class, 'favoriteList'])    // User's favorite movies (requires authentication)
     ->middleware('auth:sanctum');                                      // Apply auth middleware for protection
 Route::get('/movies/search', [MovieController::class, 'search']);      // Search for movies
+Route::controller(RegisterController::class)->group(function(){
+    Route::post('register', 'register');
+    Route::post('login', 'login');
+});
