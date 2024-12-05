@@ -1,14 +1,19 @@
-import './App.css';
+import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-        The greatest group in history, Group 4
-        </p>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
