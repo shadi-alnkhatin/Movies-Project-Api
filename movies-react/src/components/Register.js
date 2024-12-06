@@ -62,9 +62,17 @@ const Register = () => {
           },
         }
       );
+      const token = response.data.data.token;
+      console.log(`token: ${token}`);
+      console.log(`name: ${response.data.data.name}`);
+      
 
-      alert("Registration successful!");
-      window.location.href = "/login";
+      if (token) {
+        localStorage.setItem("authToken", token); 
+        localStorage.setItem("name", response.data.data.name);
+      }
+      
+      window.history.back();
     } catch (error) {
       if (error.response && error.response.data) {
         setError(
