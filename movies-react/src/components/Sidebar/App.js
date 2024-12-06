@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebare from './Sidebar';
 
-import './Sidebar.css';
+import '../Sidebar.css';
 
 function App() {
   return (
