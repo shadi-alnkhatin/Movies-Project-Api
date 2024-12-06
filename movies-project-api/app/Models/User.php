@@ -57,9 +57,9 @@ class User extends Authenticatable
         return $this->hasMany(Favorite::class);
 
     }
-    public function hasFavorited(Movie $movie): bool
+    public function hasFavorited(int $movieID): bool
     {
-        return $this->favorites()->where('movie_id', $movie->id)->exists();
+        return $this->favorites()->where('movie_id', $movieID)->exists();
     }
     public function comments() {
         return $this->hasMany(Comment::class);

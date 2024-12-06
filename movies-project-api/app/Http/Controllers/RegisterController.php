@@ -29,7 +29,7 @@ class RegisterController extends MyBaseController
         $success['name'] =  $user->name;
         return $this->sendResponse($success, 'User register successfully.');
     }
-    
+
     public function login(Request $request)
     {
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
@@ -40,5 +40,21 @@ class RegisterController extends MyBaseController
         }else{
             return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
         }
+    }
+    public function hasFavorited($movieID)
+    {
+        $user = Auth::user(); // Get the authenticated user
+
+        if (!$user) {
+            return response()->json([
+                'error' => 'User not authenticated.'
+            ], 401);
+        }
+
+        $hasFavorited = $user->hasFavorited((int) $movieID);
+
+        return response()->json([
+            'has_favorited' => $hasFavorited,
+        ]);
     }
 }
