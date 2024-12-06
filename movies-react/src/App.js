@@ -8,6 +8,9 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./components/Home";
 import MovieDetails from "./components/MovieDetails";
+import ResultSearch from './components/ResultSearch/ResultSearch';
+import SearchResult from "./components/ResultSearch/ResultSearch";
+
 
 function App() {
   const location = useLocation();
@@ -21,7 +24,8 @@ function App() {
 
           {showHome && <Home />}
           <Routes>
-                  
+          <Route path="/search" element={<SearchResult />} />
+
                   <Route path="/movie/:id" element={<MovieDetails />} />
           </Routes>
           </main>
