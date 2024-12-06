@@ -4,6 +4,7 @@ import "./assets/css/style.css";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import MovieCard from "./components/MovieCard";
+import Favorites from "./components/Favorites";
 import Sidebar from "./components/Sidebar/Sidebar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./components/Home";
