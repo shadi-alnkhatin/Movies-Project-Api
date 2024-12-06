@@ -29,8 +29,7 @@ Route::get('/favorites', [MovieController::class, 'favoriteList'])// Get favorit
 Route::get('/movies/search', [MovieController::class, 'search']);      // Search for movies
 Route::get('/genres',[GenreController::class, 'index']); // get the genres list
 Route::get('/genres/{id}' ,[GenreController::class, 'getMoviesBasedGenre']);// get movies based genre
-Route::post('/add-favorite/{id}', [FavoriteController::class, 'add']);// add a new favorite
-Route::post('/remove-favorite/{id}', [FavoriteController::class, 'remove']);// remove a favorite
+
 Route::controller(RegisterController::class)->group(function(){
 Route::post('register', 'register');
 Route::post('login', 'login');
@@ -42,7 +41,10 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/has-fav/{movieID}', [RegisterController::class, 'hasFavorited']);
     Route::post('/movies/{movieId}/comments', [CommentController::class, 'store']);
+    Route::post('/add-favorite/{id}', [FavoriteController::class, 'add']);// add a new favorite
+Route::post('/remove-favorite/{id}', [FavoriteController::class, 'remove']);// remove a favorite
 });
 
 Route::get('/movies/{movieId}/comments', [CommentController::class, 'index']);

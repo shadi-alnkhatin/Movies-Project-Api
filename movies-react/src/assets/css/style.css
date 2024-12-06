@@ -104,6 +104,7 @@
 }
 
 
+
 /*-----------------------------------*\
   #RESET
 \*-----------------------------------*/
@@ -248,6 +249,7 @@ body {
   display: flex;
   align-items: center;
   gap: 4px;
+  font-size: 1.6rem;
 }
 
 .btn {
@@ -609,6 +611,12 @@ visibility: visible;
 
 .movie-detail .genre {
   margin: 12px 16px;
+  font-size: large;
+  display: inline;
+}
+.overview{
+  width: 80%;
+  font-size: large;
 }
 
 .detail-list {
@@ -633,6 +641,9 @@ visibility: visible;
 
 .genre-list .title-wrapper {
   margin-bottom: 56px;
+}
+.genre span {
+  display: inline;
 }
 
 .grid-list {
@@ -792,6 +803,7 @@ visibility: visible;
 
   /* MOVIE DETAIL PAGE */
   .backdrop-image {
+    filter: brightness(0.19);
     border-top-left-radius: var(--radius-36);
   }
 
