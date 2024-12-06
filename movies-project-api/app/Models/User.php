@@ -51,7 +51,7 @@ class User extends Authenticatable
             'is_admin' => 'boolean',
         ];
     }
-    
+
 
     public function favorites(){
         return $this->hasMany(Favorite::class);
@@ -61,4 +61,8 @@ class User extends Authenticatable
     {
         return $this->favorites()->where('movie_id', $movie->id)->exists();
     }
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+
 }

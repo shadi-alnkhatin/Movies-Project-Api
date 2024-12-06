@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\GenreController;
 use Illuminate\Http\Request;
@@ -39,3 +40,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/profile', [ProfileController::class, 'update']);
     Route::delete('/profile', action: [ProfileController::class, 'destroy']);
 });
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/movies/{movieId}/comments', [CommentController::class, 'store']);
+});
+
+Route::get('/movies/{movieId}/comments', [CommentController::class, 'index']);
