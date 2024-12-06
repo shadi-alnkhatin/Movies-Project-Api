@@ -31,8 +31,8 @@ Route::get('/genres/{id}' ,[GenreController::class, 'getMoviesBasedGenre']);// g
 Route::post('/add-favorite/{id}', [FavoriteController::class, 'add']);// add a new favorite
 Route::post('/remove-favorite/{id}', [FavoriteController::class, 'remove']);// remove a favorite
 Route::controller(RegisterController::class)->group(function(){
-    Route::post('register', 'register');
-    Route::post('login', 'login');
+Route::post('register', 'register');
+Route::post('login', 'login');
 });
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show']);
