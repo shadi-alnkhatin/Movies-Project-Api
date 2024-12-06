@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Link, useLocation } from "react
 import "./assets/css/style.css";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import MovieCard from "./components/MovieCard";
 import Sidebar from "./components/Sidebar/Sidebar";
 
 import Home from "./components/Home";
