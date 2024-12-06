@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MovieCard from './MovieCard';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import cover1 from "../assets/images/cover10.jpg";
+import cover2 from "../assets/images/cover1.jpg";
+import cover3 from "../assets/images/cover2.jpg";
 
 function Home() {
   const [moviesByGenre, setMoviesByGenre] = useState({
@@ -45,24 +49,38 @@ function Home() {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="app">
+
       <section className="container">
-        {/* Carousel Section */}
-        <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+         {/* Carousel Section */}
+         <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
           <div className="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button 
+              type="button" 
+              data-bs-target="#carouselExampleControls" 
+              data-bs-slide-to="0" 
+              className="active" 
+              aria-current="true" 
+              aria-label="Slide 1"></button>
+            <button 
+              type="button" 
+              data-bs-target="#carouselExampleControls" 
+              data-bs-slide-to="1" 
+              aria-label="Slide 2"></button>
+            <button 
+              type="button" 
+              data-bs-target="#carouselExampleControls" 
+              data-bs-slide-to="2" 
+              aria-label="Slide 3"></button>
           </div>
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img src="https://t3.ftcdn.net/jpg/06/62/88/84/360_F_662888417_FMXrcGIeFkfHIdmOnUfFIcEQYKQoWCne.jpg" className="d-block w-100 h-100" alt="Slide 1" />
+              <img src={cover1} className="d-block w-100" alt="Slide 1" />
             </div>
             <div className="carousel-item">
-              <img src="https://static.vecteezy.com/system/resources/thumbnails/028/274/915/small/strong-athletic-male-fighter-view-from-the-back-photo.jpg" className="d-block w-100 h-100" alt="Slide 2" />
+              <img src={cover2} className="d-block w-100" alt="Slide 2" />
             </div>
             <div className="carousel-item">
-              <img src="https://c4.wallpaperflare.com/wallpaper/619/789/88/action-cyborg-film-movie-wallpaper-preview.jpg" className="d-block w-100 h-100" alt="Slide 3" />
+              <img src={cover3} className="d-block w-100" alt="Slide 3" />
             </div>
           </div>
         </div>
@@ -97,7 +115,7 @@ function Home() {
           </div>
         </div>
       </section>
-    </div>
+    
   );
 }
 

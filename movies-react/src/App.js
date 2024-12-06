@@ -1,35 +1,42 @@
-
-import React from 'react';
-import './App.css';
+// import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from "react-router-dom";
 import "./assets/css/style.css";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import LandingPage from './components/Landing';
-import Home from './components/Home';
 import Register from "./components/Register";
 import Login from "./components/Login";
 import MovieCard from "./components/MovieCard";
+import Favorites from "./components/Favorites";
 import Sidebar from "./components/Sidebar/Sidebar";
-import './components/Sidebar/Sidebar.css';
 
+import Home from "./components/Home";
+import MovieDetails from "./components/MovieDetails";
 
 function App() {
+  const location = useLocation();
+  const showSidebar = location.pathname !== '/login' && location.pathname !== '/register';
+  const showHome = location.pathname === '/';
+
   return (
+      <div>
+          <main>
+          {showSidebar && <Sidebar />}
 
-    <Router>
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<LandingPage />} /> 
-        <Route path="/Home" element={<Home />} /> 
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} /> 
-        <Route path="/MovieCard" element={<MovieCard />} /> 
-        <Route path="/Sidebar" element={<Sidebar/>}/>
-      </Routes>
-    </div>
-  </Router>
-
+          {showHome && <Home />}
+          <Routes>
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/movie/:id" element={<MovieDetails />} />
+          </Routes>
+          </main>
+         
+      </div>
   );
 }
 
-export default App;
+export default function WrappedApp() {
+  return (
+      <Router>
+          <App />
+      </Router>
+  );
+}

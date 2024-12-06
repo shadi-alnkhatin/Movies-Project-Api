@@ -7,40 +7,40 @@
   box-sizing: border-box;
 }
 :root {
-  /* Colours */
-  --background: #121826;
-  --banner-background: #2b3a4a;  
-  --white-alpha-20: #ffffff33;
-  --on-background: #e5f1ff;      
-  --on-surface: #d0e3ff;
-  --on-surface-variant: #7f8fa6;  
-  --primary: #1a73e8;            
-  --primary-variant: #1259c7;    
-  --rating-color: #ffd700;       
-  --surface: #1c2733;            
-  --text-color: #9aaab8;         
-  --white: #ffffff;
+    /* Colours */
+    --background: #121826;
+    --banner-background: #2b3a4a;  
+    --white-alpha-20: #ffffff33;
+    --on-background: #e5f1ff;
+    --on-surface: #d0e3ff;
+    --on-surface-variant: #7f8fa6;
+    --primary: #1a73e8;
+    --primary-variant: #1259c7;
+    --rating-color: #ffd700;
+    --surface: #1c2733;
+    --text-color: #9aaab8;
+    --white: #ffffff;
 
-  /* Gradient colors */
-  --bottom-overlay: 180deg, rgba(28, 39, 51, 0), rgb(28, 39, 51);
+    /* Gradient colors */
+    --bottom-overlay: 180deg, rgba(28, 39, 51, 0), rgb(28, 39, 51);
 
-  /* Typography remains unchanged */
-  --ff-dm-sans: "DM Sans", sans-serif;
+    /* Typography remains unchanged */
+    --ff-dm-sans: "DM Sans", sans-serif;
 
-  /* Font size */
-  --fs-heading: 4rem;
-  --fs-title-lg: 2.6rem;
-  --fs-title: 2rem;
-  --fs-body: 1.8rem;
-  --fs-button: 1.5rem;
-  --fs-label: 1.4rem;
+    /* Font size */
+    --fs-heading: 4rem;
+    --fs-title-lg: 2.6rem;
+    --fs-title: 2rem;
+    --fs-body: 1.8rem;
+    --fs-button: 1.5rem;
+    --fs-label: 1.4rem;
 
-  /* Font weight */
-  --weight-bold: 700;
+    /* Font weight */
+    --weight-bold: 700;
 
-  /* Shadow */
-  --shadow-1: 0 1px 4px rgba(0, 0, 0, 0.75);
-  --shadow-2: 0 2px 4px rgba(26, 115, 232, 0.3);
+    /* Shadow */
+    --shadow-1: 0 1px 4px rgba(0, 0, 0, 0.75);
+    --shadow-2: 0 2px 4px rgba(26, 115, 232, 0.3);
 
   /* border radius */
   --radius-4: 4px;
@@ -104,69 +104,6 @@
 }
 
 
-/*-----------------------------------*\
-  #Landing
-\*-----------------------------------*/
-
-
-.background-container {
-  background-image: url('../images/poster-background.jpg');
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 128, 0.5);
-}
-
-.content {
-  z-index: 2;
-  text-align: center;
-}
-
-.hero {
-  margin: 25px 0;
-  max-width: 600px;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 20px;
-  color: white;
-  border-radius: 20px;
-  display: flex; 
-  flex-direction: column;
-  align-items: center; 
-  text-align: center; 
-}
-
-.hero h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-}
-
-.hero p {
-  margin: 15px 0;
-  font-size: 1.77rem;
-}
-
-.btn-Discover {
-  margin-top: 20px;
-  background-color: #30579c; 
-  color: var(--white);
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: var(--fs-button);
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: var(--primary); 
-}
 
 /*-----------------------------------*\
   #RESET
@@ -194,7 +131,7 @@ button {
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: none; 
 }
 
 img {
@@ -491,7 +428,9 @@ body {
   transition: var(--transition-short);
 }
 
+.search-wrapper:focus-within .leading-icon {
 
+}
 
 .separator {
   width: 4px;
@@ -556,6 +495,8 @@ visibility: visible;
 .sidebar-link {
   color: var(--on-surface-variant);
   transition: var(--transition-short);
+  text-decoration: none;
+  font-size: 1.8rem;
 }
 
 .sidebar-link:is(:hover, :focus-visible) {
@@ -615,14 +556,11 @@ visibility: visible;
 
 .movie-card {
   width: 200px;
-
-
 }
 
 .movie-card .card-banner {
   width: 200px;
-
-  white-space: nowrap;
+  height: 300px;
 }
 
 .movie-card .title {
@@ -636,7 +574,6 @@ visibility: visible;
 .movie-card .meta-list {
   display: flex;
   justify-content: space-between;
-  white-space: nowrap;
 }
 
 /*-----------------------------------*\
