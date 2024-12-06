@@ -5,6 +5,7 @@ use App\Http\Controllers\GenreController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -32,4 +33,9 @@ Route::post('/remove-favorite/{id}', [FavoriteController::class, 'remove']);// r
 Route::controller(RegisterController::class)->group(function(){
 Route::post('register', 'register');
 Route::post('login', 'login');
+});
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show']);
+    Route::put('/profile', [ProfileController::class, 'update']);
+    Route::delete('/profile', action: [ProfileController::class, 'destroy']);
 });

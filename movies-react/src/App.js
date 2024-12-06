@@ -9,8 +9,8 @@ import Home from './components/Home';
 import Register from "./components/Register";
 import Login from "./components/Login";
 import MovieCard from "./components/MovieCard";
-
-
+import Sidebar from "./components/Sidebar/Sidebar";
+import './components/Sidebar/Sidebar.css';
 
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} /> 
         <Route path="/MovieCard" element={<MovieCard />} /> 
-
+        <Route path="/Sidebar" element={<Sidebar/>}/>
       </Routes>
     </div>
   </Router>

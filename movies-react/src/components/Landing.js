@@ -1,5 +1,4 @@
 import React from "react";
-import "./Landing.css";
 import { Link } from 'react-router-dom';
 
 function LandingPage() {
@@ -7,12 +6,12 @@ function LandingPage() {
     <div className="background-container">
       <div className="content">
         <div className="hero">
-          <h1>Unlimited movies, TV shows, and more</h1>
-          <p className="fs-4">Starts at USD 3.99. Cancel anytime.</p>
-          <p className="fs-5">
-            Ready to watch? Enter your email to create or restart your membership.
+          <h1>Endless Adventures Await You!</h1>
+          <p className="fs-4">Explore the world of unlimited entertainment</p>
+          <p>
+          Dive into a new experience, join us now and start your journey! Discover content you'll love, anytime, anywhere.
           </p>
-          <Link className="btn px-4 fs-4" to="/Home">
+          <Link className="btn-Discover" to="/Home">
             Discover
           </Link>
         </div>

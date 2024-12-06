@@ -39,7 +39,6 @@ class MovieController extends MyBaseController
                 'Drama' => $drama
 
             ],'Movies return successfully');
-
     }
 
     /**

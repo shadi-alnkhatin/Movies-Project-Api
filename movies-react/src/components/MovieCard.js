@@ -22,6 +22,8 @@ const FavoriteButton = ({ isFavorited, onClick }) => {
   );
 };
 
+
+
 // MoviesList Component
 const MovieCard = ({movie}) => {
   // const [movies, setMovies] = useState([]);
@@ -52,8 +54,8 @@ const MovieCard = ({movie}) => {
           <figure className="poster-box card-banner">
             <a href={`/movie/details/${movie.id}`} title={movie.title}>
               <img
-                 src={`https://image.tmdb.org/t/p/w500${movie.poster_url}`}
-                  alt={movie.title}
+             src={`https://image.tmdb.org/t/p/w500${movie.poster_url}`}
+              alt={movie.title}
                 className="img-cover"
                 height="100%"
                 width="80%"

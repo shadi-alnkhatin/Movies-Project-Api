@@ -105,70 +105,6 @@
 
 
 /*-----------------------------------*\
-  #Landing
-\*-----------------------------------*/
-
-
-.background-container {
-  background-image: url('../images/poster-background.jpg');
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 128, 0.5);
-}
-
-.content {
-  z-index: 2;
-  text-align: center;
-}
-
-.hero {
-  margin: 25px 0;
-  max-width: 600px;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 20px;
-  color: white;
-  border-radius: 20px;
-  display: flex; 
-  flex-direction: column;
-  align-items: center; 
-  text-align: center; 
-}
-
-.hero h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-}
-
-.hero p {
-  margin: 15px 0;
-  font-size: 1.77rem;
-}
-
-.btn-Discover {
-  margin-top: 20px;
-  background-color: #30579c; 
-  color: var(--white);
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: var(--fs-button);
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: var(--primary); 
-}
-
-/*-----------------------------------*\
   #RESET
 \*-----------------------------------*/
 
@@ -337,10 +273,10 @@ body {
   border-radius: var(--radius-4);
 }
 
-.poster-box {
+/* .poster-box {
   background-image: url("../images/poster-bg-icon.png");
   aspect-ratio: 2 / 3;
-}
+} */
 
 .poster-box,
 .video-card {
@@ -362,7 +298,9 @@ body {
   padding-block-end: 16px;
   margin-block-end: -16px;
 }
-
+.sidebar-link.active {
+  color: white;
+}
 .slider-list::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
@@ -500,13 +438,13 @@ body {
   border-radius: var(--radius-8);
 }
 
-.video-card {
+/* .video-card {
   background-image: url("../images/video-bg-icon.png");
   aspect-ratio: 16 / 9;
   flex-shrink: 0;
   max-width: 500px;
   width: calc(100% - 40px);
-}
+} */
 
 /*-----------------------------------*\
   #SIDEBAR
@@ -615,14 +553,11 @@ visibility: visible;
 
 .movie-card {
   width: 200px;
-
-
 }
 
 .movie-card .card-banner {
   width: 200px;
-
-  white-space: nowrap;
+  height: 300px;
 }
 
 .movie-card .title {
@@ -636,7 +571,6 @@ visibility: visible;
 .movie-card .meta-list {
   display: flex;
   justify-content: space-between;
-  white-space: nowrap;
 }
 
 /*-----------------------------------*\
