@@ -1,26 +1,41 @@
 // import "./App.css";
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from "react-router-dom";
+import "./assets/css/style.css";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import MovieCard from "./components/MovieCard";
 import Sidebar from "./components/Sidebar/Sidebar";
-import './components/Sidebar/Sidebar.css';
 
-import "./assets/css/style.css";
+import Home from "./components/Home";
+import MovieDetails from "./components/MovieDetails";
 
 function App() {
-  return (
-    <Router>
-      <div>
-        <Routes>
-          <Route path="/" element={<Sidebar/>}/>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+  const location = useLocation();
+  const showSidebar = location.pathname !== '/login' && location.pathname !== '/register';
+  const showHome = location.pathname === '/';
 
-        </Routes>
+  return (
+      <div>
+          <main>
+          {showSidebar && <Sidebar />}
+
+          {showHome && <Home />}
+          <Routes>
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/movie/:id" element={<MovieDetails />} />
+          </Routes>
+          </main>
+         
       </div>
-    </Router>
   );
 }
 
-export default App;
+export default function WrappedApp() {
+  return (
+      <Router>
+          <App />
+      </Router>
+  );
+}

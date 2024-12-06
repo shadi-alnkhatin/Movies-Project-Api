@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // SidebarList Component
 const SidebarList = ({ title, children }) => (
-    <div className="sidebar-list">
+    <div className="sidebar-list text-light">
         {title && <p className="title">{title}</p>}
         {children}
     </div>
