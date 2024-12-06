@@ -1,13 +1,48 @@
-import React from 'react';
-import "./Home.css";
-import MovieCard from '../MovieCard/MovieCard';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import MovieCard from './MovieCard';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 function Home() {
-  const actionMovies = ["Action Movie 1", "Action Movie 2", "Action Movie 3" , "Action Movie 4" , "Action Movie 5", "Action Movie 6", "Action Movie 6"];
-  const romanceMovies = ["Romance Movie 1", "Romance Movie 2", "Romance Movie 3"];
-  const dramaMovies = ["Drama Movie 1", "Drama Movie 2", "Drama Movie 3"];
+  const [moviesByGenre, setMoviesByGenre] = useState({
+    action: [],
+    romance: [],
+    drama: [],
+  });
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  
+  useEffect(() => {
+    axios
+      .get('http://127.0.0.1:8000/api/movies') 
+      .then((response) => {
+        const all = response.data|| [];
+        console.log(all.data.Drama, 'Drama');
+
+        const actionMovies =all.data.Action;
+        const romanceMovies = all.data.Romance;
+        const dramaMovies = all.data.Drama;
+        console.log(actionMovies,"Action");
+
+        setMoviesByGenre({
+          action: actionMovies,
+          romance: romanceMovies,
+          drama: dramaMovies,
+        });
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching movies:', error);
+        setError('Fail loading movies');
+        setLoading(false);
+      });
+  }, []);
+
+  
+  if (loading) return <p>Loading</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <div className="app">
@@ -36,8 +71,8 @@ function Home() {
         <h2 className="my-5">Action</h2>
         <div className="slider-list">
           <div className="slider-inner">
-            {actionMovies.map((movie, index) => (
-              <MovieCard key={index} movie={movie} />
+            {moviesByGenre.action.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
             ))}
           </div>
         </div>
@@ -46,17 +81,18 @@ function Home() {
         <h2 className="my-5">Romance</h2>
         <div className="slider-list">
           <div className="slider-inner">
-            {romanceMovies.map((movie, index) => (
-              <MovieCard key={index} movie={movie} />
+            {moviesByGenre.romance.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
             ))}
           </div>
         </div>
 
+        <br />
         <h2 className="my-5">Drama</h2>
         <div className="slider-list">
           <div className="slider-inner">
-            {dramaMovies.map((movie, index) => (
-              <MovieCard key={index} movie={movie} />
+            {moviesByGenre.drama.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
             ))}
           </div>
         </div>
