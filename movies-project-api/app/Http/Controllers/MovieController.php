@@ -33,13 +33,12 @@ class MovieController extends MyBaseController
 
         return $this->sendResponse([
             'movies' => $movies,
-            'genres' => [
+
                 'Action' => $action,
                 'Romance' => $romance,
                 'Drama' => $drama
-            ]
-            ],'Movies return successfully');
 
+            ],'Movies return successfully');
     }
 
     /**

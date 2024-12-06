@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\GenreController;
 use Illuminate\Http\Request;
@@ -31,11 +32,17 @@ Route::get('/genres/{id}' ,[GenreController::class, 'getMoviesBasedGenre']);// g
 Route::post('/add-favorite/{id}', [FavoriteController::class, 'add']);// add a new favorite
 Route::post('/remove-favorite/{id}', [FavoriteController::class, 'remove']);// remove a favorite
 Route::controller(RegisterController::class)->group(function(){
-    Route::post('register', 'register');
-    Route::post('login', 'login');
+Route::post('register', 'register');
+Route::post('login', 'login');
 });
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show']);
     Route::put('/profile', [ProfileController::class, 'update']);
     Route::delete('/profile', action: [ProfileController::class, 'destroy']);
 });
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/movies/{movieId}/comments', [CommentController::class, 'store']);
+});
+
+Route::get('/movies/{movieId}/comments', [CommentController::class, 'index']);
