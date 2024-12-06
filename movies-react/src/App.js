@@ -1,4 +1,3 @@
-// import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from "react-router-dom";
 import "./assets/css/style.css";
@@ -6,7 +5,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import MovieCard from "./components/MovieCard";
 import Sidebar from "./components/Sidebar/Sidebar";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./components/Home";
 import MovieDetails from "./components/MovieDetails";
 

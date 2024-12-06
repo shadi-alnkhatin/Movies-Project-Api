@@ -130,7 +130,7 @@ button {
 
 a {
   color: inherit;
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 img {
@@ -495,7 +495,7 @@ visibility: visible;
   color: var(--on-surface-variant);
   transition: var(--transition-short);
   text-decoration: none;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
 }
 
 .sidebar-link:is(:hover, :focus-visible) {
