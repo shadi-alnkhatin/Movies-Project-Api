@@ -11,9 +11,10 @@ const SearchResult = () => {
   useEffect(() => {
     if (searchText) {
       setLoading(true);  
-     axios.get(`http://localhost:8000/api/movies?search=${searchText}`).then(
+     axios.get(`http://localhost:8000/api/movies/search/${searchText}`).then(
       response=>{
-         setMovies(response.data.data.movies) ;
+        console.log(response.data.data.search_results);
+        setMovies(response.data.data.search_results || []);
          setLoading(false);
       }
      )

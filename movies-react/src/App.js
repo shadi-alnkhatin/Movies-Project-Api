@@ -38,6 +38,7 @@ function App() {
                   <Route path="/favorites" element={<Favorites />} />
                   <Route path="/filter/:id" element={<MoviesFilterResults/>} />
                   <Route path="/search/:searchText" element={<SearchResult/>} />
+                  <Route path="/profile" element={<ProfilePage />} />
 
           </Routes>
           </main>

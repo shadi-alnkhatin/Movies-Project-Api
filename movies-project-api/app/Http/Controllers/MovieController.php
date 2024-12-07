@@ -41,9 +41,6 @@ class MovieController extends MyBaseController
             ],'Movies return successfully');
     }
 
-    /**
-     * Display the specified resource detail.
-     */
     public function detail($id)
     {
         $movie = Movie::findOrFail($id);
@@ -72,15 +69,26 @@ class MovieController extends MyBaseController
     /**
      * Search for movies by title or description.
      */
-    public function search(Request $request)
-    {
-        $str = $request->query('search'); // Get the 'search' query parameter
-        $movies = Movie::where('title', 'LIKE', '%' . $str . '%')
-            ->orWhere('description', 'LIKE', '%' . $str . '%')
-            ->get();
+    public function search($search)
+{
+    $str = trim($search); // Get and trim the 'search' query parameter
 
-        return $this->sendResponse([
-            'search_results' => $movies
-        ],'Search Results');
+    if (empty($str)) {
+        return $this->sendResponse([], 'Please provide a search term.');
     }
+
+    $movies = Movie::where('title', 'LIKE', '%' . $str . '%')
+        ->orderBy('title', 'asc') // Optional: Order alphabetically
+        ->take(20) // Limit the number of results
+        ->get();
+
+    if ($movies->isEmpty()) {
+        return $this->sendResponse([], 'No movies found matching your search.');
+    }
+
+    return $this->sendResponse([
+        'search_results' => $movies
+    ], 'Search Results');
+}
+
 }

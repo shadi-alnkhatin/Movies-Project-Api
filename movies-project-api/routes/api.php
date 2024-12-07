@@ -26,7 +26,7 @@ Route::get('/movies', [MovieController::class, 'index']);// List all movies
 Route::get('/movie/{id}', [MovieController::class, 'detail']);// Get movie details by ID
 Route::get('/favorites', [MovieController::class, 'favoriteList'])// Get favorites for user
     ->middleware('auth:sanctum');
-Route::get('/movies/search', [MovieController::class, 'search']);      // Search for movies
+Route::get('/movies/search/{search}', [MovieController::class, 'search']);      // Search for movies
 Route::get('/genres',[GenreController::class, 'index']); // get the genres list
 Route::get('/genres/{id}' ,[GenreController::class, 'getMoviesBasedGenre']);// get movies based genre
 
