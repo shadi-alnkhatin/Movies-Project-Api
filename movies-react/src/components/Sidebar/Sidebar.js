@@ -12,6 +12,7 @@ const SidebarList = ({ title, children }) => (
 const handelLogout =()=>{
   localStorage.removeItem('authToken');
   localStorage.removeItem('name');
+  window.location.href='../';
 }
 const isLogin=()=>{
  if(localStorage.getItem('authToken'))
@@ -108,7 +109,7 @@ const Sidebar = () => {
             </a>
           </SidebarList>
 
-          <SidebarList>
+          {isLogin()&&( <SidebarList>
             <a
               href="/favorites"
               className={`sidebar-link ${isActive('/favorites') ? 'active' : ''}`}
@@ -116,7 +117,7 @@ const Sidebar = () => {
             >
               Watch Later List
             </a>
-          </SidebarList>
+          </SidebarList>)}
           {isLogin()&&(
           <SidebarList title="Account">
             <a
@@ -125,14 +126,13 @@ const Sidebar = () => {
             >
               Profile
             </a>
-            <form method="POST" action="/logout">
+           
               <button
                 onClick={handelLogout}
                 className={`sidebar-link ${isActive('/logout') ? 'active' : ''}`}
               >
                 Logout
               </button>
-            </form>
           </SidebarList>)}
         </div>
       </nav>
