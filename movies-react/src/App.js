@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo, useMemo } from "react";
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from "react-router-dom";
 import "./assets/css/style.css";
 import Register from "./components/Register";
@@ -11,23 +11,27 @@ import Home from "./components/Home";
 import MovieDetails from "./components/MovieDetails";
 import ResultSearch from './components/ResultSearch/ResultSearch';
 import SearchResult from "./components/ResultSearch/ResultSearch";
+import MoviesFilterResults from "./components/MoviesFilterResults";
 
 
 function App() {
   const location = useLocation();
   const showSidebar = location.pathname !== '/login' && location.pathname !== '/register';
   const showHome = location.pathname === '/';
+  const sidebar = useMemo(() => <Sidebar />, []);
 
   return (
       <div>
           <main>
-          {showSidebar && <Sidebar />}
-
+          {showSidebar && sidebar} {/* Sidebar stays static */}
           {showHome && <Home />}
           <Routes>
           <Route path="/search" element={<SearchResult />} />
 
                   <Route path="/movie/:id" element={<MovieDetails />} />
+                  <Route path="/favorites" element={<Favorites />} />
+                  <Route path="/filter/:id" element={<MoviesFilterResults/>} />
+
           </Routes>
           </main>
           <Routes>

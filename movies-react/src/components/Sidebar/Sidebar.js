@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 // SidebarList Component
 const SidebarList = ({ title, children }) => (
@@ -9,93 +9,102 @@ const SidebarList = ({ title, children }) => (
     </div>
 );
 
-// Sidebar Component
+
+
 const Sidebar = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [genreList, setGenreList] = useState([]);  
-    const [loading, setLoading] = useState(true);   
-    const [error, setError] = useState(null);        
-    const [activeLink, setActiveLink] = useState(null); 
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation(); // Get the current location
 
-    const toggleSidebar = () => {
-        setIsOpen(!isOpen);
-    };
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
 
-    const handleLinkClick = (link) => {
-        setActiveLink(link); 
-    };
+  const isActive = (path) => location.pathname === path; 
 
-    useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/genres')
-            .then(response => {
-                setGenreList(response.data.data || []); 
-                setLoading(false);
-            })
-            .catch(error => {
-                setError('Error loading genres');
-                setLoading(false);
-            });
-    }, []);
+  return (
+    <div>
+      <nav className={`sidebar ${isOpen ? 'open' : ''}`} id="sidebar">
+        <div className="sidebar-inner">
+          <SidebarList title="Genre">
+            <a
+              href="/filter/1"
+              className={`sidebar-link ${isActive('/filter/1') ? 'active' : ''}`}
+            >
+              Action
+            </a>
+            <a
+              href="/filter/2"
+              className={`sidebar-link ${isActive('/filter/2') ? 'active' : ''}`}
+            >
+              Romance
+            </a>
+            <a
+              href="/filter/3"
+              className={`sidebar-link ${isActive('/filter/3') ? 'active' : ''}`}
+            >
+              Drama
+            </a>
+            <a
+              href="/filter/4"
+              className={`sidebar-link ${isActive('/filter/4') ? 'active' : ''}`}
+            >
+              Adventure
+            </a>
+            <a
+              href="/filter/5"
+              className={`sidebar-link ${isActive('/filter/5') ? 'active' : ''}`}
+            >
+              Fantasy
+            </a>
+            <a
+              href="/filter/6"
+              className={`sidebar-link ${isActive('/filter/6') ? 'active' : ''}`}
+            >
+              Comedy
+            </a>
+            <a
+              href="/filter/7"
+              className={`sidebar-link ${isActive('/filter/7') ? 'active' : ''}`}
+            >
+              Crime
+            </a>
+          </SidebarList>
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>{error}</p>;
+          <SidebarList>
+            <a
+              href="/favorites"
+              className={`sidebar-link ${isActive('/favorites') ? 'active' : ''}`}
+              style={{ color: 'var(--primary-variant)' }}
+            >
+              Watch Later List
+            </a>
+          </SidebarList>
 
-    return (
-        <div>
-            <nav className={`sidebar ${isOpen ? 'open' : ''}`} id="sidebar">
-                <div className="sidebar-inner">
-                    <SidebarList title="Genre">
-                        {genreList.length > 0 ? (
-                            genreList.map((genre) => (
-                                <a
-                                    key={genre.id}
-                                    href={`/movie/filter/${genre.id}`}
-                                    className={`sidebar-link ${activeLink === genre.id ? 'active' : ''}`}
-                                    onClick={() => handleLinkClick(genre.id)}
-                                >
-                                    {genre.name}
-                                </a>
-                            ))
-                        ) : (
-                            <p>No genres available</p>
-                        )}
-                    </SidebarList>
-
-                    <SidebarList>
-                        <a
-                            href="/favorites"
-                            className={`sidebar-link ${activeLink === 'favorites' ? 'active' : ''}`}
-                            onClick={() => handleLinkClick('favorites')}
-                            style={{ color: "var(--primary-variant)" }}
-                        >
-                            Watch Later list
-                        </a>
-                    </SidebarList>
-
-                    <SidebarList title="Account">
-                        <a
-                            href="/profile/edit"
-                            className={`sidebar-link ${activeLink === 'profile' ? 'active' : ''}`}
-                            onClick={() => handleLinkClick('profile')}
-                        >
-                            Profile
-                        </a>
-                        <form method="POST" action="/logout">
-                            <button
-                                type="submit"
-                                className={`sidebar-link ${activeLink === 'logout' ? 'active' : ''}`}
-                                onClick={() => handleLinkClick('logout')}
-                            >
-                                Logout
-                            </button>
-                        </form>
-                    </SidebarList>
-                </div>
-            </nav>
-
-            <div className={`overlay ${isOpen ? 'open' : ''}`} onClick={toggleSidebar}></div>
+          <SidebarList title="Account">
+            <a
+              href="/profile/edit"
+              className={`sidebar-link ${isActive('/profile/edit') ? 'active' : ''}`}
+            >
+              Profile
+            </a>
+            <form method="POST" action="/logout">
+              <button
+                type="submit"
+                className={`sidebar-link ${isActive('/logout') ? 'active' : ''}`}
+              >
+                Logout
+              </button>
+            </form>
+          </SidebarList>
         </div>
-    );
+      </nav>
+
+      <div
+        className={`overlay ${isOpen ? 'open' : ''}`}
+        onClick={toggleSidebar}
+      ></div>
+    </div>
+  );
 };
 
 export default Sidebar;
