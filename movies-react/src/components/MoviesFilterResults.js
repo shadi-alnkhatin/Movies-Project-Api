@@ -24,7 +24,7 @@ export default function MoviesFilterResults() {
         console.error('Error fetching data:', error);
         setLoading(false);
       });
-  }, [id]); // Runs when `id` changes
+  }, [id]); 
 
   if (loading)
     return (
@@ -34,7 +34,7 @@ export default function MoviesFilterResults() {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          height: '100vh', // Adjust for better full-page experience
+          height: '100vh', 
         }}
       >
         <RingLoader color="#007bff" loading={loading} size={100} />
@@ -43,7 +43,8 @@ export default function MoviesFilterResults() {
 
   return (
     <div className="movies-list">
-      <h2>{genreName}</h2>
+            <br /> <br />
+      <h2 className='title'>{genreName}</h2>
       <br />
       <div className="grid-list">
         {moviesByGenre.length > 0 ? (

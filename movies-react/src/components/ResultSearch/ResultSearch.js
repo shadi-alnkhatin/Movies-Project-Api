@@ -30,6 +30,7 @@ const SearchResult = () => {
   return (
     <div className="genre-list movie-list">
       <div id="start" className="title-wrapper">
+        <br />
         <h2 className="title">Search Result</h2>
       </div>
       {movies.length > 0 ? (
@@ -39,7 +40,7 @@ const SearchResult = () => {
           ))}
         </div>
       ) : (
-        <h1 className="heading">There are no films based on your search text 😥</h1>
+        <h1 className="title">There are no films based on your search text 🤏🏻🤏🏻🤏🏻</h1>
       )}
     </div>
   );
