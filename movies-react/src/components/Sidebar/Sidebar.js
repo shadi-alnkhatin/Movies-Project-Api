@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom'; 
 
 // SidebarList Component
 const SidebarList = ({ title, children }) => (
@@ -24,6 +24,15 @@ const isLogin=()=>{
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation(); // Get the current location
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token); 
+  }, []);
+
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
