@@ -4,14 +4,20 @@ import "./assets/css/style.css";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import MovieCard from "./components/MovieCard";
+
 import Favorites from "./components/Favorites";
 import Sidebar from "./components/Sidebar/Sidebar";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./components/Home";
 import MovieDetails from "./components/MovieDetails";
 import ResultSearch from './components/ResultSearch/ResultSearch';
 import SearchResult from "./components/ResultSearch/ResultSearch";
 import MoviesFilterResults from "./components/MoviesFilterResults";
+
+import Nav from "./components/layouts/nav"; 
+import ProfilePage from './components/ProfilePage';  
+import ProfilePass from './components/ProfilePass'; 
 
 
 function App() {
@@ -38,6 +44,7 @@ function App() {
                   <Route path="/register" element={<Register />} />
                   <Route path="/login" element={<Login />} />
           </Routes>
+ 
       </div>
   );
 }
