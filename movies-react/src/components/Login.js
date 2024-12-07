@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../assets/css/Register.css";
 import axios from "axios";
+import { FaEnvelope, FaLock } from "react-icons/fa";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -113,6 +114,7 @@ const Login = () => {
   </div>
   
   );
+  
 };
 
 export default Login;

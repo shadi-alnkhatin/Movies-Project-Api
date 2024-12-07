@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
-
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -49,3 +49,5 @@ Route::post('/remove-favorite/{id}', [FavoriteController::class, 'remove']);// r
 });
 
 Route::get('/movies/{movieId}/comments', [CommentController::class, 'index']);
+
+Route::post('/contacts', [ContactController::class, 'store']);

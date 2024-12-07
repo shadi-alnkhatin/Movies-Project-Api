@@ -4,15 +4,18 @@ import "./assets/css/style.css";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import MovieCard from "./components/MovieCard";
+import Footer from "./components/Footer";
 import Favorites from "./components/Favorites";
 import Sidebar from "./components/Sidebar/Sidebar";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./components/Home";
+import Contact from "./components/Contact";
 import MovieDetails from "./components/MovieDetails";
-import ResultSearch from './components/ResultSearch/ResultSearch';
 import SearchResult from "./components/ResultSearch/ResultSearch";
+import AboutUs from "./components/AboutUs/AboutUs";
 import MoviesFilterResults from "./components/MoviesFilterResults";
+import TermsAndConditions from "./components/TermsAndConditions";
 
 import Nav from "./components/layouts/nav"; 
 import ProfilePage from './components/ProfilePage';  
@@ -21,7 +24,8 @@ import ProfilePass from './components/ProfilePass';
 
 function App() {
   const location = useLocation();
-  const showSidebar = location.pathname !== '/login' && location.pathname !== '/register';
+
+  const showSidebar = location.pathname !== '/login' && location.pathname !== '/register' && location.pathname !== '/contact' && location.pathname !== '/TermsAndConditions' && location.pathname !== '/AboutUs';
   const showHome = location.pathname === '/';
   const sidebar = useMemo(() => <Sidebar />, []);
 
@@ -46,11 +50,17 @@ function App() {
           <Routes>
                   <Route path="/register" element={<Register />} />
                   <Route path="/login" element={<Login />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
+                  <Route path="/AboutUs" element={<AboutUs />} />
           </Routes>
+      <Footer />
+
  
       </div>
   );
 }
+
 
 export default function WrappedApp() {
   return (
