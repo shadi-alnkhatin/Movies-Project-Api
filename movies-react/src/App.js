@@ -9,6 +9,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./components/Home";
 import MovieDetails from "./components/MovieDetails";
+// import AboutUs from "./components/AboutUs/AboutUs";
 
 function App() {
   const location = useLocation();
