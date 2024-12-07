@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import Swal from 'sweetalert2';
-
+import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
     });
 
     const handleChange = (e) => {
@@ -19,46 +18,73 @@ const Contact = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const { name, email, phone, subject, message } = formData;
 
-        // Validation (can be extended as needed)
+        // Validation
         if (!name || !email || !phone || !subject || !message) {
             Swal.fire({
-                title: 'Error!',
-                text: 'Please fill all fields.',
-                icon: 'error',
+                title: "Error!",
+                text: "Please fill all fields.",
+                icon: "error",
             });
             return;
         }
 
-        // Simulate email sending (you can integrate an actual service like SMTP or an API)
-        // For now, we just show a success message
-        Swal.fire({
-            title: 'Success!',
-            text: 'Your message has been sent successfully!',
-            icon: 'success',
-        });
+        try {
+            // API Request
+            const response = await fetch("http://127.0.0.1:8000/api/contacts", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
 
-        // Clear form after submission
-        setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            subject: '',
-            message: '',
-        });
+            if (response.ok) {
+                const data = await response.json();
+
+                Swal.fire({
+                    title: "Success!",
+                    text: data.message || "Your message has been sent successfully!",
+                    icon: "success",
+                });
+
+                // Clear form after submission
+                setFormData({
+                    name: "",
+                    email: "",
+                    phone: "",
+                    subject: "",
+                    message: "",
+                });
+            } else {
+                // Handle API errors
+                const errorData = await response.json();
+                Swal.fire({
+                    title: "Error!",
+                    text: errorData.message || "Something went wrong!",
+                    icon: "error",
+                });
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            Swal.fire({
+                title: "Error!",
+                text: "Unable to connect to the server. Please try again later.",
+                icon: "error",
+            });
+        }
     };
 
     return (
-        <section className="content container">
-            <h2>Contact Us</h2>
-            <form onSubmit={handleSubmit}>
-                {/* Name and Email */}
-                <div className="row mb-3">
-                    <div className="col-md-6 mb-3 mb-md-0">
+        <section className="contact-section">
+            <div className="contact-card">
+                <h2 className="contact-title">Contact Us</h2>
+                <form onSubmit={handleSubmit} className="contact-form">
+                    <div className="form-row">
                         <input
                             type="text"
                             required
@@ -66,10 +92,8 @@ const Contact = () => {
                             placeholder="Full Name"
                             value={formData.name}
                             onChange={handleChange}
-                            className="form-control"
+                            className="form-input"
                         />
-                    </div>
-                    <div className="col-md-6">
                         <input
                             type="email"
                             required
@@ -77,14 +101,11 @@ const Contact = () => {
                             placeholder="Email Address"
                             value={formData.email}
                             onChange={handleChange}
-                            className="form-control"
+                            className="form-input"
                         />
                     </div>
-                </div>
 
-                {/* Phone and Subject */}
-                <div className="row mb-3">
-                    <div className="col-md-6 mb-3 mb-md-0">
+                    <div className="form-row">
                         <input
                             type="text"
                             required
@@ -92,10 +113,8 @@ const Contact = () => {
                             placeholder="Phone Number"
                             value={formData.phone}
                             onChange={handleChange}
-                            className="form-control"
+                            className="form-input"
                         />
-                    </div>
-                    <div className="col-md-6">
                         <input
                             type="text"
                             required
@@ -103,33 +122,26 @@ const Contact = () => {
                             placeholder="Subject"
                             value={formData.subject}
                             onChange={handleChange}
-                            className="form-control"
+                            className="form-input"
                         />
                     </div>
-                </div>
 
-                {/* Message */}
-                <div className="mb-3">
-                    <textarea
-                        name="message"
-                        required
-                        placeholder="Your Message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        rows="5"
-                        className="form-control"
-                    />
-                </div>
+                    <div className="form-row">
+                        <textarea
+                            name="message"
+                            required
+                            placeholder="Your Message"
+                            value={formData.message}
+                            onChange={handleChange}
+                            rows="5"
+                            className="form-input"
+                        />
+                    </div>
 
-                {/* Submit Button */}
-                <button className= "message" type="submit">
-                    Send Message
-                </button>
-            </form>
-
-            {/* Contact Information */}
-            <div className="footer-contact">
-
+                    <button className="submit-btn" type="submit">
+                        Send Message
+                    </button>
+                </form>
             </div>
         </section>
     );

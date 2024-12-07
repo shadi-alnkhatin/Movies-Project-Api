@@ -9,33 +9,38 @@ import Favorites from "./components/Favorites";
 import Sidebar from "./components/Sidebar/Sidebar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./components/Home";
-import MovieDetails from "./components/MovieDetails";
 import Contact from "./components/Contact";
+import MovieDetails from "./components/MovieDetails";
+import SearchResult from "./components/ResultSearch/ResultSearch";
+
 
 function App() {
   const location = useLocation();
-  const showSidebar = location.pathname !== '/login' && location.pathname !== '/register';
+  const showSidebar = location.pathname !== '/login' && location.pathname !== '/register' &&  location.pathname !== '/Contact';
   const showHome = location.pathname === '/';
-  const showFooter = location.pathname !== '/login' && location.pathname !== '/register';
+
 
   return (
       <div>
           <main>
           {showSidebar && <Sidebar />}
-
           {showHome && <Home />}
+         
           <Routes>
-                  
-                  <Route path="/movie/:id" element={<MovieDetails />} />
-                  <Route path="/Contact" element={<Contact />} />
+          <Route path="/search" element={<SearchResult />} />
+          <Route path="/movie/:id" element={<MovieDetails />} />
+                 
           </Routes>
+          
           </main>
+
           <Routes>
                   <Route path="/register" element={<Register />} />
                   <Route path="/login" element={<Login />} />
-                  
+                  <Route path="/Contact" element={<Contact />} />
           </Routes>
-          {showFooter && <Footer />}
+
+          <Footer />
       </div>
   );
 }

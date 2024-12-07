@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MovieCard from "./MovieCard";  
+import MovieCard from "../MovieCard";  
 
 const SearchResult = ({ searchQuery }) => {
   const [movies, setMovies] = useState([]);

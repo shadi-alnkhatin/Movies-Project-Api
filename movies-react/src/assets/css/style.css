@@ -8,7 +8,7 @@
 }
 :root {
     /* Colours */
-    --background: #121826;
+    --background: #06223A;
     --banner-background: #2b3a4a;  
     --white-alpha-20: #ffffff33;
     --on-background: #e5f1ff;
@@ -792,96 +792,277 @@ visibility: visible;
 }
 
 /*-----------------------------------*\
+  #LOGIN
+\*-----------------------------------*/
+
+.login-page {
+  position: relative;
+  background-image: url('/src/assets/images/bg1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0.3); */
+  z-index: 1;
+}
+
+.login-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Login card styles */
+.login-card {
+  background-color: var(--background);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  color: #fff;
+  width: 100%;
+  max-width: 500px;
+}
+
+.login-card h2 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  margin-top: 1.5rem;
+ font-weight: 300;
+ font-size: 2.5rem;
+}
+
+.login-card .input-group {
+  margin-bottom: 1.5rem;
+
+}
+
+.login-card .input-group-text {
+  background-color: #1c2938;
+  color: #cbd5e0;
+  border: none;
+  border-radius: 0;
+
+}
+
+.login-card input {
+  font-size: 1.35rem;
+
+}
+
+.login-card .form-control {
+  height: 50px;
+  border: 1px solid #cbd5e0;
+  border-left: none;
+  color: #fff;
+  background-color: #1c2938;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-card .form-control:focus {
+  border-color: #ffffff;
+  background-color: #ebebeb;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(102, 175, 233, 0.25);
+}
+
+.login-card .btn {
+  background-color: #1259c7;
+  border: none;
+  height: 50px;
+  width: 100%; 
+  max-width: 200px; 
+  font-size: 1.3rem;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin: 3rem auto;
+  text-align: center; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+
+}
+
+.login-card .btn:hover {
+  background-color: #1d72b8;
+}
+
+.login-card .alert {
+  margin-top: 1rem;
+}
+
+.login-card .alert-success {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.login-card .alert-danger {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.login-card .text-light {
+  color: #cbd5e0;
+}
+
+.login-card .text-primary {
+  color: #1d72b8;
+}
+
+.login-card .text-primary:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .login-card {
+    padding: 1.5rem;
+    width: 90%; /* Make card smaller on smaller screens */
+  }
+
+  .login-card h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+/*-----------------------------------*\
   #CONTACTS
 \*-----------------------------------*/
 
-/* 
-.contact-page {
-  border-radius: var(--radius-16);
-  padding: 20px;
-  box-shadow: var(--shadow-1);
-  width: 100%;
-  max-width: 800px;
-
-}
-
-.contact-container {
+.contact-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-image: url('/src/assets/images/bg1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
   background-color: var(--surface);
-  padding: 30px;
-  border-radius: var(--radius-8);
-  box-shadow: var(--shadow-2);
+  padding: 2rem;
 }
 
-h2 {
-  color: var(--on-background);
-  font-size: var(--fs-title);
-  margin-bottom: 20px;
+/* Contact Form Card Styling */
+.contact-card {
+  background-color: var(--background);
+  border-radius: var(--radius-8);
+  box-shadow: var(--shadow-1);
+  padding: 3rem;
+  width: 100%;
+  max-width: 600px;
   text-align: center;
 }
 
+/* Contact Form Title */
+.contact-title {
+
+  color: var(--on-background);
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 2.5rem;
+}
+
+/* Form Row Layout */
 .form-row {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
 }
 
-input,
-textarea {
-  width: 48%;
-  padding: 12px;
-  margin: 6px 0;
-  border-radius: var(--radius-8);
-  border: 1px solid var(--primary);
-  font-size: var(--fs-body);
-  color: var(--on-surface);
-  background-color: transparent;
+.form-row input{
+  width: 47%;
+  padding: 1rem;
+  border-radius: var(--radius-4);
+  border: 1px solid #ddd;
+  box-shadow: var(--shadow-1);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  background-color: #1c2938;
+  color: #cbd5e0;
 }
 
-textarea {
+.form-row textarea {
   width: 100%;
-  resize: none;
-  min-height: 150px;
+  padding: 1rem;
+  border-radius: var(--radius-4);
+  border: 1px solid #ddd;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  background-color: #1c2938;
+  color: #cbd5e0;
 }
 
-button.submit-button {
-  width: 100%;
-  background-color: var(--primary);
-  color: var(--white);
-  font-size: var(--fs-button);
-  padding: 12px;
-  border: none;
+/* Focus Styling for Inputs and Textarea */
+.form-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 5px rgba(18, 89, 199, 0.3);
+  outline: none;
+}
+
+/* Submit Button Styling */
+.submit-btn {
+  background-color: var(--primary); 
+  border: none; 
+  height: 50px;
+  width: 100%; 
+  max-width: 200px; 
+  font-size: var(--fs-button); 
+  font-weight: var(--weight-bold); 
+  margin: 3rem auto; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color var(--transition-short); 
   border-radius: var(--radius-8);
-  cursor: pointer;
-  transition: background-color var(--transition-short);
 }
 
-button.submit-button:hover {
-  background-color: var(--primary-variant);
+.submit-btn:hover {
+  background-color: var(--primary-variant); /* Change background color on hover */
 }
 
-.submission-message {
-  margin-top: 20px;
-  text-align: center;
-  color: green;
+
+/* Error and Success Messages */
+.swal2-popup {
+  border-radius: var(--radius-8);
+  padding: 2rem;
   font-size: var(--fs-body);
 }
 
-.footer-contact {
-  margin-top: 30px;
-  color: var(--on-surface);
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .form-row input,
+  .form-row textarea {
+      width: 100%;
+  }
+
+  .contact-card {
+      padding: 2rem;
+  }
 }
 
-.footer-contact p {
-  font-size: var(--fs-body);
-  display: flex;
-  align-items: center;
-}
 
-.footer-contact p svg {
-  margin-right: 10px;
-}
-
- */
 
 /*-----------------------------------*\
   #HEADER
