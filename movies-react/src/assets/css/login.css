@@ -1,0 +1,134 @@
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #001f3f, #0074d9);
+
+    font-family: Arial, sans-serif;
+}
+
+.register .card {
+    display: flex;
+    width: 70%;
+    max-width: 900px;
+    background-color: #ffffff;
+    /* خلفية بيضاء */
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.register .card .left {
+    flex: 1;
+    padding: 40px;
+    background: #eaeaea;
+    /* خلفية فاتحة */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.register .card .left h1 {
+    color: #0074d9;
+    /* أزرق غامق */
+    margin-bottom: 20px;
+}
+
+.register .card .left p {
+    color: #555555;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.register .card .left span {
+    color: #777777;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.register .card .left button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #0074d9;
+    /* أزرق غامق */
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.register .card .left button:hover {
+    background-color: #0053a6;
+    /* أزرق أغمق عند التمرير */
+}
+
+.register .card .right {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.register .card .right h1 {
+    color: #2b0e08;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.register .card .right form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register .card .right form input {
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.register .card .right form input:focus {
+    outline: none;
+    border-color: #0074d9;
+    /* أزرق غامق عند التركيز */
+    box-shadow: 0 0 4px rgba(106, 17, 203, 0.3);
+}
+
+.register .card .right form button {
+    padding: 12px 20px;
+    background-color: #0074d9;
+    /* أزرق غامق */
+    color: #f0f0f0;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.register .card .right form button:hover {
+    background-color: #0053a6;
+    /* أزرق أغمق عند التمرير */
+}
+
+.register .card .right form button:disabled {
+    background-color: #cccccc;
+    /* لون رمادي عند تعطيل الزر */
+    cursor: not-allowed;
+}
+
+.register .card .right form .error {
+    color: #dc3545;
+    /* أحمر لفشل التحقق */
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}

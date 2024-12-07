@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom'; 
 
 // SidebarList Component
 const SidebarList = ({ title, children }) => (
@@ -9,11 +9,30 @@ const SidebarList = ({ title, children }) => (
     </div>
 );
 
-
+const handelLogout =()=>{
+  localStorage.removeItem('authToken');
+  localStorage.removeItem('name');
+  window.location.href='../';
+}
+const isLogin=()=>{
+ if(localStorage.getItem('authToken'))
+  return true;
+ else
+ return false;
+}
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation(); // Get the current location
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token); 
+  }, []);
+
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -90,7 +109,7 @@ const Sidebar = () => {
             </a>
           </SidebarList>
 
-          <SidebarList>
+          {isLogin()&&( <SidebarList>
             <a
               href="/favorites"
               className={`sidebar-link ${isActive('/favorites') ? 'active' : ''}`}
@@ -98,24 +117,23 @@ const Sidebar = () => {
             >
               Watch Later List
             </a>
-          </SidebarList>
-
+          </SidebarList>)}
+          {isLogin()&&(
           <SidebarList title="Account">
             <a
-              href="/profile/edit"
-              className={`sidebar-link ${isActive('/profile/edit') ? 'active' : ''}`}
+              href="/profile"
+              className={`sidebar-link ${isActive('/profile') ? 'active' : ''}`}
             >
               Profile
             </a>
-            <form method="POST" action="/logout">
+           
               <button
-                type="submit"
+                onClick={handelLogout}
                 className={`sidebar-link ${isActive('/logout') ? 'active' : ''}`}
               >
                 Logout
               </button>
-            </form>
-          </SidebarList>
+          </SidebarList>)}
         </div>
       </nav>
 

@@ -4,89 +4,95 @@ import Cookies from 'js-cookie';
 
 
 // Favorite Button Component
-const FavoriteButton = ({ isFavorited, onClick }) => {
+// const FavoriteButton = ({ isFavorited, onClick }) => {
   
-  if (isFavorited){
-   return (<button onClick={onClick} class="favorite" style={{zIndex: '1000', display: 'absolute'}}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                  <path fill="red" fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
-              </svg>
-    </button>);
-  }
-  else{
-    return ( <button onClick={onClick}  class="favorite" style={{zIndex: '1000', display: 'absolute'}}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
-      </svg>
-  </button>)
-  }
+//   if (isFavorited){
+//    return (<button onClick={onClick} class="favorite" style={{zIndex: '1000', display: 'absolute'}}>
+//               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+//                   <path fill="red" fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+//               </svg>
+//     </button>);
+//   }
+//   else{
+//     return ( <button onClick={onClick}  class="favorite" style={{zIndex: '1000', display: 'absolute'}}>
+//       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+//           <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+//       </svg>
+//   </button>)
+//   }
 
-};
+// };
 
 
 // MoviesList Component
 const MovieCard = ({ movie }) => {
-  const [favorites, setFavorites] = useState([]);
-
+  // const [favorites, setFavorites] = useState([]);
+  const isLogin=()=>{
+    if(localStorage.getItem('authToken'))
+     return true;
+    else
+    return false;
+   }
+   
   // Fetch favorite movies from cookies or API on component mount
-  useEffect(() => {
-    // If logged in, fetch favorites from API
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      // Fetch favorites from the API
-      axios.get('http://127.0.0.1:8000/api/favorites', {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then(response => {
-        const favoriteMovies = response.data.data.favorites.map(fav => fav.id);
-        setFavorites(favoriteMovies);
+  // useEffect(() => {
+  //   // If logged in, fetch favorites from API
+  //   const token = localStorage.getItem('authToken');
+  //   if (token) {
+  //     // Fetch favorites from the API
+  //     axios.get('http://127.0.0.1:8000/api/favorites', {
+  //       headers: { Authorization: `Bearer ${token}` }
+  //     })
+  //     .then(response => {
+  //       const favoriteMovies = response.data.data.favorites.map(fav => fav.id);
+  //       setFavorites(favoriteMovies);
 
-        // After logging in, send cookies' favorites to the database
-        // const storedFavorites = Cookies.get('favorites') ? JSON.parse(Cookies.get('favorites')) : [];
-        // if (storedFavorites.length > 0) {
-        //   storedFavorites.forEach(movieId => {
-        //     axios.post(`http://127.0.0.1:8000/api/add-favorite/${movieId}`, {}, {
-        //       headers: { Authorization: `Bearer ${token}` }
-        //     })
-        //     .catch(error => console.error('Error adding favorite from cookies to API:', error));
-        //   });
-        //   // After sending favorites to the API, remove them from cookies
-        //   Cookies.remove('favorites');
-        // }
-      })
-      .catch(error => console.error('Error fetching favorites from API:', error));
-    } else {
-      // If not logged in, fetch favorites from cookies
-      // const storedFavorites = Cookies.get('favorites') ? JSON.parse(Cookies.get('favorites')) : [];
-      // setFavorites(storedFavorites);
-    }
-  }, []);
+  //       // After logging in, send cookies' favorites to the database
+  //       // const storedFavorites = Cookies.get('favorites') ? JSON.parse(Cookies.get('favorites')) : [];
+  //       // if (storedFavorites.length > 0) {
+  //       //   storedFavorites.forEach(movieId => {
+  //       //     axios.post(`http://127.0.0.1:8000/api/add-favorite/${movieId}`, {}, {
+  //       //       headers: { Authorization: `Bearer ${token}` }
+  //       //     })
+  //       //     .catch(error => console.error('Error adding favorite from cookies to API:', error));
+  //       //   });
+  //       //   // After sending favorites to the API, remove them from cookies
+  //       //   Cookies.remove('favorites');
+  //       // }
+  //     })
+  //     .catch(error => console.error('Error fetching favorites from API:', error));
+  //   } else {
+  //     // If not logged in, fetch favorites from cookies
+  //     // const storedFavorites = Cookies.get('favorites') ? JSON.parse(Cookies.get('favorites')) : [];
+  //     // setFavorites(storedFavorites);
+  //   }
+  // }, []);
 
   // Handle favorite click (add/remove favorite)
-  const handleFavoriteClick = async (movieId) => {
-    let updatedFavorites;
+  // const handleFavoriteClick = async (movieId) => {
+  //   let updatedFavorites;
 
-    if (favorites.includes(movieId)) {
-      // Remove from favorites
-      updatedFavorites = favorites.filter((id) => id !== movieId);
-      if (localStorage.getItem('authToken')) {
-        // If logged in, remove from DB
-       await axios.post(`http://127.0.0.1:8000/api/remove-favorite/${movieId}`, {}, {
-          headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
-        })
-        .catch(error => console.error('Error removing favorite from API:', error));
-      }
-    } else {
-      // Add to favorites
-      updatedFavorites = [...favorites, movieId];
-      if (localStorage.getItem('authToken')) {
-        // If logged in, add to DB
-        axios.post(`http://127.0.0.1:8000/api/add-favorite/${movieId}`, {}, {
-          headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
-        })
-        .catch(error => console.error('Error adding favorite to API:', error));
-      }
-    }
+  //   if (favorites.includes(movieId)) {
+  //     // Remove from favorites
+  //     updatedFavorites = favorites.filter((id) => id !== movieId);
+  //     if (localStorage.getItem('authToken')) {
+  //       // If logged in, remove from DB
+  //      await axios.post(`http://127.0.0.1:8000/api/remove-favorite/${movieId}`, {}, {
+  //         headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
+  //       })
+  //       .catch(error => console.error('Error removing favorite from API:', error));
+  //     }
+  //   } else {
+  //     // Add to favorites
+  //     updatedFavorites = [...favorites, movieId];
+  //     if (localStorage.getItem('authToken')) {
+  //       // If logged in, add to DB
+  //       axios.post(`http://127.0.0.1:8000/api/add-favorite/${movieId}`, {}, {
+  //         headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
+  //       })
+  //       .catch(error => console.error('Error adding favorite to API:', error));
+  //     }
+  //   }
 
     // Save updated favorites to cookies (for both logged-in and logged-out users)
     // if (!localStorage.getItem('authToken')) {
@@ -94,9 +100,9 @@ const MovieCard = ({ movie }) => {
     // }
 
     // Update state
-    setFavorites(updatedFavorites);
-  };
-  const isFavorited = favorites.includes(movie.id);
+    // setFavorites(updatedFavorites);
+  //};
+  // const isFavorited = favorites.includes(movie.id);
 
   return (
     <div className="movies-list">
@@ -128,10 +134,10 @@ const MovieCard = ({ movie }) => {
         </a>
 
         {/* Favorite Button */}
-        <FavoriteButton
+       {/* {isLogin()&&( <FavoriteButton
           isFavorited={isFavorited}
           onClick={() => handleFavoriteClick(movie.id)}
-        />
+        />)} */}
 
         {/* Movie Meta Information */}
         <div className="meta-list">
@@ -153,7 +159,6 @@ const MovieCard = ({ movie }) => {
         </div>
       </div>
     </div>
-  );
-};
+  );};
 
 export default MovieCard;

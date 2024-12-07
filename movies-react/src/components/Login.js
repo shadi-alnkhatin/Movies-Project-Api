@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "../assets/css/Register.css";
 import axios from "axios";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 
@@ -12,10 +13,19 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState("");
   const [token, setToken] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
+  if (localStorage.getItem('authToken')) {
+    window.location.href = "../";
+}
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+    setErrors({});
+    setMessage("");
   };
 
   const handleSubmit = async (e) => {
@@ -30,86 +40,79 @@ const Login = () => {
       );
       setMessage("Login successful!");
       setToken(response.data.token);
-      localStorage.setItem("token", response.data.token);
-    } catch (error) {
-      if (error.response && error.response.data.errors) {
-        setErrors(error.response.data.errors);
+
+      const token = response.data.data.token;
+      console.log(`token: ${token}`);
+      console.log(`name: ${response.data.data.name}`);
+      
+
+      if (token) {
+        localStorage.setItem("authToken", token); 
+        localStorage.setItem("name", response.data.data.name);
+        window.history.back();
       }
-      if (error.response && error.response.data.error) {
-        setMessage(error.response.data.error);
+      
+
+    } catch (error) {
+      if (error.response) {
+        if (error.response.data.errors) {
+          setErrors(error.response.data.errors);
+        } else if (error.response.data.error) {
+          setMessage(error.response.data.error); 
+        } else {
+          setMessage("Invalid email or password.");
+        }
+      } else {
+        setMessage("Something went wrong. Please try again."); 
       }
     }
   };
 
   return (
-    <div className="login-page">
-      <div className="login-container">
-        <div className="login-card">
-          <h2>Login</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="input-group">
-              <span className="input-group-text">
-                <FaEnvelope />
-              </span>
-              <input
-                type="email"
-                name="email"
-                className="form-control"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Email"
-              />
-            </div>
-            {errors.email && (
-              <div className="text-danger">{errors.email[0]}</div>
-            )}
-            <div className="input-group">
-              <span className="input-group-text">
-                <FaLock />
-              </span>
-              <input
-                type="password"
-                name="password"
-                className="form-control"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="Password"
-              />
-            </div>
-            {errors.password && (
-              <div className="text-danger">{errors.password[0]}</div>
-            )}
-            <button type="submit" className="btn">
-              Login
-            </button>
-          </form>
-          {message && (
-            <div
-              className={`alert ${
-                message === "Login successful!"
-                  ? "alert-success"
-                  : "alert-danger"
-              }`}
-            >
-              {message}
-            </div>
-          )}
-          {token && (
-            <div className="mt-3">
-              <strong>Token:</strong> {token}
-            </div>
-          )}
-          <div className="mt-3 text-center">
-            <p>
-              Don't have an account?{" "}
-              <Link to="/register" className="text-primary">
-                Register here
-              </Link>
-            </p>
-          </div>
+    <div className="register">
+    <div className="card">
+      <div className="right">
+        <h1>Login</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          {errors.email && <p className="error">{errors.email[0]}</p>}
+  
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          {errors.password && <p className="error">{errors.password[0]}</p>}
+  
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Logging in..." : "Login"}
+          </button>
+        </form>
+        {message && (
+          <p className={`error ${message === "Login successful!" ? "success" : ""}`}>
+            {message}
+          </p>
+        )}
+        <div className="text-center mt-3">
+          <p>
+            Don't have an account?{" "}
+            <Link to="/register" className="text-primary">
+              Register here
+            </Link>
+          </p>
         </div>
       </div>
     </div>
+  </div>
+  
   );
   
 };
