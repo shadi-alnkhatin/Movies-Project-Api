@@ -26,7 +26,7 @@ Route::get('/movies', [MovieController::class, 'index']);// List all movies
 Route::get('/movie/{id}', [MovieController::class, 'detail']);// Get movie details by ID
 Route::get('/favorites', [MovieController::class, 'favoriteList'])// Get favorites for user
     ->middleware('auth:sanctum');
-Route::get('/movies/search', [MovieController::class, 'search']);      // Search for movies
+Route::get('/movies/search/{search}', [MovieController::class, 'search']);      // Search for movies
 Route::get('/genres',[GenreController::class, 'index']); // get the genres list
 Route::get('/genres/{id}' ,[GenreController::class, 'getMoviesBasedGenre']);// get movies based genre
 
@@ -42,7 +42,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/has-fav/{movieID}', [RegisterController::class, 'hasFavorited']);
-    Route::post('/movies/{movieId}/comments', [CommentController::class, 'store']);
+    Route::post('/add-comments/{movieId}', [CommentController::class, 'store']);
+    Route::get('/comments/{movieId}', [CommentController::class, 'index']);
     Route::post('/add-favorite/{id}', [FavoriteController::class, 'add']);// add a new favorite
 Route::post('/remove-favorite/{id}', [FavoriteController::class, 'remove']);// remove a favorite
 });

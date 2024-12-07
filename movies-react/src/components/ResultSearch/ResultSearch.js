@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
-import MovieCard from "./MovieCard";  
+import MovieCard from "../MovieCard";  
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
-const SearchResult = ({ searchQuery }) => {
+const SearchResult = () => {
+  const { searchText } = useParams();  
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (searchQuery) {
+    if (searchText) {
       setLoading(true);  
-      fetch(`http://localhost:3000/api/movies?search=${searchQuery}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setMovies(data);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error("Error fetching movies:", error);
-          setLoading(false);
-        });
+     axios.get(`http://localhost:8000/api/movies/search/${searchText}`).then(
+      response=>{
+        console.log(response.data.data.search_results);
+        setMovies(response.data.data.search_results || []);
+         setLoading(false);
+      }
+     )
     } else {
       setMovies([]); 
     }
-  }, [searchQuery]);
+  }, [searchText]);
 
   if (loading) {
     return <div>Loading</div>;
@@ -30,7 +30,7 @@ const SearchResult = ({ searchQuery }) => {
   return (
     <div className="genre-list movie-list">
       <div id="start" className="title-wrapper">
-        <h2 className="heading">Search Result</h2>
+        <h2 className="title">Search Result</h2>
       </div>
       {movies.length > 0 ? (
         <div className="grid-list">

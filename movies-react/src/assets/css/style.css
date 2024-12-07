@@ -105,6 +105,14 @@
 
 
 
+
+
+.fav-details{
+  display: flex;
+  align-items: center ;
+  gap: 20px;
+}
+
 /*-----------------------------------*\
   #RESET
 \*-----------------------------------*/
@@ -405,6 +413,8 @@ body {
   outline: none;
   border-radius: var(--radius-8);
   transition: var(--transition-short);
+  color: #f8f9fa;
+  font-size: 18px;
 }
 
 .search-field::placeholder {
@@ -756,6 +766,9 @@ visibility: visible;
   .header {
     padding: 28px 56px;
   }
+  .sidebar-toggle-btn{
+    visibility: hidden;
+  }
 
   .logo img {
    height: 100%;
@@ -790,7 +803,7 @@ visibility: visible;
 
   .container {
     height: 100vh;
-    border-top-left-radius: var(--radius-36);
+    /* border-top-left-radius: var(--radius-36); */
   }
 
 
@@ -818,4 +831,109 @@ visibility: visible;
   filter:brightness(0.5);
 
 
+}
+/* Custom Header Styles */
+.custom-header {
+  background-color: var(--background);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo styling */
+.logo-link img {
+  display: block;
+  width: 140px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo-link img:hover {
+  transform: scale(1.1);
+}
+
+/* Search box container */
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 25px;
+  background-color: var(--banner-background);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 5px 15px;
+}
+
+.search-icon {
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.search-icon:hover {
+  transform: scale(1.2);
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  font-size: 16px;
+  transition: width 0.3s ease;
+}
+
+.search-input:focus {
+  width: 250px;
+  transition: width 0.3s ease;
+}
+
+.clear-search-btn {
+  background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clear-search-btn img {
+  transition: transform 0.3s ease;
+}
+
+.clear-search-btn:hover img {
+  transform: rotate(180deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .custom-header {
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-container {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .search-input {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-container {
+    max-width: 100%;
+  }
+
+  .search-input {
+    width: 100%;
+  }
 }
