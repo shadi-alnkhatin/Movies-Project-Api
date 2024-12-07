@@ -4,7 +4,6 @@ import "./assets/css/style.css";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import MovieCard from "./components/MovieCard";
-
 import Favorites from "./components/Favorites";
 import Sidebar from "./components/Sidebar/Sidebar";
 
@@ -28,6 +27,7 @@ function App() {
 
   return (
       <div>
+        <Nav></Nav>
           <main>
           {showSidebar && sidebar} {/* Sidebar stays static */}
           {showHome && <Home />}
@@ -37,6 +37,7 @@ function App() {
                   <Route path="/movie/:id" element={<MovieDetails />} />
                   <Route path="/favorites" element={<Favorites />} />
                   <Route path="/filter/:id" element={<MoviesFilterResults/>} />
+                  <Route path="/search/:searchText" element={<SearchResult/>} />
 
           </Routes>
           </main>
