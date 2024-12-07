@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #001f3f, #0074d9);
+    background: linear-gradient(135deg, #121826, #2b3a4a);
 
     font-family: Arial, sans-serif;
 }
@@ -13,7 +13,7 @@
 .register .card {
     display: flex;
     width: 70%;
-    max-width: 900px;
+    max-width: 600px;
     background-color: #ffffff;
     /* خلفية بيضاء */
     border-radius: 12px;
@@ -55,7 +55,8 @@
 .register .card .left button {
     padding: 10px 20px;
     border: none;
-    background-color: #0074d9;
+    background-color: #121826;
+    text-align: center;
     /* أزرق غامق */
     color: #ffffff;
     font-size: 16px;
@@ -65,7 +66,7 @@
 }
 
 .register .card .left button:hover {
-    background-color: #0053a6;
+    background-color: #08131f;
     /* أزرق أغمق عند التمرير */
 }
 

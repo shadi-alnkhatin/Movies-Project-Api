@@ -9,7 +9,16 @@ const SidebarList = ({ title, children }) => (
     </div>
 );
 
-
+const handelLogout =()=>{
+  localStorage.removeItem('authToken');
+  localStorage.removeItem('name');
+}
+const isLogin=()=>{
+ if(localStorage.getItem('authToken'))
+  return true;
+ else
+ return false;
+}
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -99,23 +108,23 @@ const Sidebar = () => {
               Watch Later List
             </a>
           </SidebarList>
-
+          {isLogin()&&(
           <SidebarList title="Account">
             <a
-              href="/profile/edit"
-              className={`sidebar-link ${isActive('/profile/edit') ? 'active' : ''}`}
+              href="/profile"
+              className={`sidebar-link ${isActive('/profile') ? 'active' : ''}`}
             >
               Profile
             </a>
             <form method="POST" action="/logout">
               <button
-                type="submit"
+                onClick={handelLogout}
                 className={`sidebar-link ${isActive('/logout') ? 'active' : ''}`}
               >
                 Logout
               </button>
             </form>
-          </SidebarList>
+          </SidebarList>)}
         </div>
       </nav>
 
