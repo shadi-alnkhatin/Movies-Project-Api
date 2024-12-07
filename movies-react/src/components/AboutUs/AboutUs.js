@@ -14,7 +14,7 @@ const AboutUs = () => {
               Our platform aims to be your first source of inspiration, discovering the finest films and exploring
               everything new in the world of cinema, presented in a style worthy of every big-screen lover.
             </p>
-            <a href="./contactus.html" id="Contact-a" className="btn btn-light">
+            <a href="#" id="Contact-a" className="btn btn-light">
               Contact Us
             </a>
           </div>
@@ -60,7 +60,7 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-      <a href="./" id="Home-a" style={{ color: '#bec8cf', textDecoration: 'none' }}>
+      <a href="#" id="Home-a" style={{ color: '#bec8cf', textDecoration: 'none' }}>
         <i className="fas fa-arrow-left"></i> Back To Home
       </a>
     </section>

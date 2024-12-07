@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom'; 
 
 // SidebarList Component
 const SidebarList = ({ title, children }) => (
@@ -14,6 +14,15 @@ const SidebarList = ({ title, children }) => (
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation(); // Get the current location
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token); 
+  }, []);
+
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -101,20 +110,29 @@ const Sidebar = () => {
           </SidebarList>
 
           <SidebarList title="Account">
-            <a
-              href="/profile/edit"
-              className={`sidebar-link ${isActive('/profile/edit') ? 'active' : ''}`}
-            >
-              Profile
-            </a>
-            <form method="POST" action="/logout">
-              <button
-                type="submit"
-                className={`sidebar-link ${isActive('/logout') ? 'active' : ''}`}
-              >
-                Logout
-              </button>
-            </form>
+            {isLoggedIn ? (
+              <>
+                <a
+                  href="/profile/edit"
+                  className={`sidebar-link ${isActive('/profile/edit') ? 'active' : ''}`}
+                >
+                  Profile
+                </a>
+                <form method="POST" action="/logout">
+                  <button
+                    type="submit"
+                    className={`sidebar-link ${isActive('/logout') ? 'active' : ''}`}
+                  >
+                    Logout
+                  </button>
+                </form>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className="sidebar-link">Login</Link>
+                <Link to="/register" className="sidebar-link">Register</Link>
+              </>
+            )}
           </SidebarList>
         </div>
       </nav>
