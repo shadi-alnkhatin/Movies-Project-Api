@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { FaFacebook, FaInstagram, FaTiktok, FaPhone, FaEnvelope } from "react-icons/fa";
-
+import logo from "../assets/images/GoMovies.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,9 +12,9 @@ const Footer = () => {
       {/* Footer Wrapper */}
       <div className="footer-wrapper">
         {/* Logo Section */}
-        <div className="footer-logo">
-          <img src="logo.png" alt="Logo" />
-          <p className="footer-logo-text">MovieMaze</p>
+        <div className="footer-logo logo-link">
+        <img src={logo} alt="MovieMaze home" width="140" height="32" />
+          <p className="footer-logo-text">Go Movies</p>
         </div>
 
         {/* Links Section */}
@@ -23,7 +23,7 @@ const Footer = () => {
           <ul className="footer-links-list">
             <li><Link to="/">Home</Link></li>
             <li><a href="/about">About Us</a></li>
-            <li><a href="/subscription">Subscription</a></li>
+            <li><Link to="/TermsAndConditions">TermsAndConditions</Link></li>
             <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>

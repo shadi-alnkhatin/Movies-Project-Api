@@ -57,6 +57,7 @@ const Login = () => {
                 className="form-control"
                 value={formData.email}
                 onChange={handleChange}
+                placeholder="Email"
               />
             </div>
             {errors.email && (
@@ -72,6 +73,7 @@ const Login = () => {
                 className="form-control"
                 value={formData.password}
                 onChange={handleChange}
+                placeholder="Password"
               />
             </div>
             {errors.password && (
@@ -109,6 +111,7 @@ const Login = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Login;

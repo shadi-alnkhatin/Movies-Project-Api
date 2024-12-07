@@ -6,6 +6,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import cover1 from "../assets/images/cover10.jpg";
 import cover2 from "../assets/images/cover1.jpg";
 import cover3 from "../assets/images/cover2.jpg";
+import RingLoader from "react-spinners/ClipLoader";
 
 function Home() {
   const [moviesByGenre, setMoviesByGenre] = useState({
@@ -45,12 +46,27 @@ function Home() {
   }, []);
 
   
-  if (loading) return <p>Loading</p>;
+  if (loading) return  (<div
+    className="spinner-container"
+    style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+  >
+  <RingLoader color="#007bff" loading={loading} size={100} />
+</div>);
   if (error) return <p>{error}</p>;
 
   return (
 
       <section className="container">
+              {loading ? (
+        <div className="spinner-container">
+          <div className="spinner"></div>
+        </div>
+      ) : null}
+
          {/* Carousel Section */}
          <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
           <div className="carousel-indicators">
@@ -115,7 +131,7 @@ function Home() {
           </div>
         </div>
       </section>
-    
+          
   );
 }
 

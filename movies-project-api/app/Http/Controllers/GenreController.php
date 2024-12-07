@@ -16,7 +16,6 @@ class GenreController extends MyBaseController
     public function getMoviesBasedGenre($id){
         $genre = Genre::find($id);
         $movies = $genre->movies;
-        $genres=Genre::all();
-        return $this->sendResponse([$genre,$movies,$genres], 'Genres Data');
+        return $this->sendResponse(['movies'=>$movies,'genreName'=>$genre->name], 'Genres Data');
     }
 }

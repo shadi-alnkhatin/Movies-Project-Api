@@ -80,7 +80,16 @@ const Contact = () => {
     };
 
     return (
-        <section className="contact-section">
+        <div className="contact-section">
+            <div className="side-contact">
+                <p>
+                    Whether you need <span className="highlight-text">recommendations, support, </span> 
+                     or just want to chat about your 
+                    <span className="highlight-text">favorite films, </span>
+                    <br/> we're here for you; contact us today!
+                </p>
+            </div>
+            
             <div className="contact-card">
                 <h2 className="contact-title">Contact Us</h2>
                 <form onSubmit={handleSubmit} className="contact-form">
@@ -143,7 +152,7 @@ const Contact = () => {
                     </button>
                 </form>
             </div>
-        </section>
+        </div>
     );
 };
 

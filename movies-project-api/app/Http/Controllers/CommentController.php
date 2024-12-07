@@ -9,19 +9,24 @@ use Illuminate\Support\Facades\Auth;
 class CommentController extends MyBaseController
 {
     public function store(Request $request, $movieId)
-{
-    $request->validate([
-        'content' => 'required|string|max:500',
-    ]);
+    {
+        $request->validate([
+            'content' => 'required|string|max:500',
+        ]);
 
-    $comment = new Comment();
-    $comment->content = $request->content;
-    $comment->user_id = Auth::id();
-    $comment->movie_id = $movieId;
-    $comment->save();
+        // Create a new comment
+        $comment = new Comment();
+        $comment->content = $request->content;
+        $comment->user_id = Auth::id();
+        $comment->movie_id = $movieId;
 
-    return $this->sendResponse($comment,'Comment added successfully');
-}
+        if ($comment->save()) {
+            $comment->load('user');
+        }
+
+        return $this->sendResponse($comment, 'Comment added successfully');
+    }
+
 
 public function index($movieId)
 {

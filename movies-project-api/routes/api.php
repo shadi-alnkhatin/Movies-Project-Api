@@ -42,7 +42,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/has-fav/{movieID}', [RegisterController::class, 'hasFavorited']);
-    Route::post('/movies/{movieId}/comments', [CommentController::class, 'store']);
+    Route::post('/add-comments/{movieId}', [CommentController::class, 'store']);
+    Route::get('/comments/{movieId}', [CommentController::class, 'index']);
     Route::post('/add-favorite/{id}', [FavoriteController::class, 'add']);// add a new favorite
 Route::post('/remove-favorite/{id}', [FavoriteController::class, 'remove']);// remove a favorite
 });

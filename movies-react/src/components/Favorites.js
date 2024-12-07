@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import MovieCard from './MovieCard';
+import Cookies from 'js-cookie';
+
 
 const Favorites = () => {
   const [favoriteMovies, setFavoriteMovies] = useState([]);
-  const token = Cookies.get('token');
+  const token = localStorage.getItem('authToken');
 
   useEffect(() => {
     if (token) {
@@ -13,7 +14,7 @@ const Favorites = () => {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
-        setFavoriteMovies(response.data.data);
+        setFavoriteMovies(response.data.data.favorites);
       })
       .catch(error => console.error('Error fetching favorites:', error));
     } else {
@@ -23,9 +24,9 @@ const Favorites = () => {
   }, [token]);
 
   return (
-    <div className="favorites-page">
+    <div className="movies-list">
       <h2>Your Favorites</h2>
-      <div className="movies-list">
+      <div className="grid-list">
         {favoriteMovies.length > 0 ? (
           favoriteMovies.map(movie => (
             <MovieCard key={movie.id} movie={movie} />

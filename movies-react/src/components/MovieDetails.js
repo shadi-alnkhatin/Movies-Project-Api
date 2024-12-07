@@ -2,18 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'; 
 import axios from 'axios';
 import star from '../assets/images/star.png';
+import CommentSection from './CommentSection';
+import RingLoader from "react-spinners/ClipLoader";
+
 const FavoriteButton = ({ isFavorited, onClick }) => {
   
   if (isFavorited){
    return (<button onClick={onClick} class="favorite" style={{zIndex: '1000', display: 'absolute'}}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                   <path fill="red" fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
               </svg>
     </button>);
   }
   else{
     return ( <button onClick={onClick}  class="favorite" style={{zIndex: '1000', display: 'absolute'}}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
       </svg>
   </button>)
@@ -96,7 +99,16 @@ export default function MovieDetails() {
   }, [id]);  
   
 
-  if (loading) return <p>Loading movie details...</p>;
+  if (loading) return  (<div
+    className="spinner-container"
+    style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+  >
+  <RingLoader color="#007bff" loading={loading} size={100} />
+</div>);
   if (error) return <p>{error}</p>;
 
   return (
@@ -115,8 +127,15 @@ export default function MovieDetails() {
 
                 <div className="detail-box">
                   <div className="detail-content">
-                    <h1 className="heading">{movie.title}</h1>
-
+                    <div className='fav-details'>
+                    <h1 className="heading">{movie.title}</h1> 
+        <div >
+        <FavoriteButton
+          isFavorited={isFavorite}
+           onClick={handleFavoriteClick} 
+        />
+      </div>
+                    </div>
                     <div className="meta-list">
                       <div className="meta-item">
                         <img src={star} width="20" height="20" alt="rating"/>
@@ -136,12 +155,7 @@ export default function MovieDetails() {
                        
                     </div>
  {/* Favorite Button */}
-      <div >
-        <FavoriteButton
-          isFavorited={isFavorite}
-           onClick={handleFavoriteClick} 
-        />
-      </div>
+      
                     <p className="genre">
                         {
                             genres.map((genre, index) => {
@@ -168,7 +182,7 @@ export default function MovieDetails() {
                   </div>
                 </div>
             </div>
-
+              <CommentSection movieId={movie.id}></CommentSection>
       </section>
   );
 }
