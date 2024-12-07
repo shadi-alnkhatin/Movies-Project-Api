@@ -413,6 +413,8 @@ body {
   outline: none;
   border-radius: var(--radius-8);
   transition: var(--transition-short);
+  color: #f8f9fa;
+  font-size: 18px;
 }
 
 .search-field::placeholder {
@@ -798,7 +800,7 @@ visibility: visible;
 
   .container {
     height: 100vh;
-    border-top-left-radius: var(--radius-36);
+    /* border-top-left-radius: var(--radius-36); */
   }
 
 
