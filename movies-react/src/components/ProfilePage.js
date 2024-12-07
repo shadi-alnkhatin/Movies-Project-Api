@@ -8,7 +8,9 @@ const ProfilePage = () => {
   const [email,setEmail]=useState();
   const [name,setName]=useState();
   const [isLoading, setIsLoading] = useState(false);
-
+  if (!localStorage.getItem('authToken')) {
+    window.location.href = "../login";
+}
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -132,7 +134,7 @@ const ProfilePage = () => {
           </button>
 
         <div style={{ display: 'flex', gap: '10px' }}>
-          <Link to="/ProfilePass">
+          <Link to="/change-password">
             <button
               type="button"
               className="btn btn-primary"

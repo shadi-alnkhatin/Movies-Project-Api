@@ -5,6 +5,9 @@ import star from '../assets/images/star.png';
 import CommentSection from './CommentSection';
 import RingLoader from "react-spinners/ClipLoader";
 
+
+
+
 const FavoriteButton = ({ isFavorited, onClick }) => {
   
   if (isFavorited){
@@ -33,8 +36,10 @@ export default function MovieDetails() {
 
   const [isFavorite, setIsFavorite] = useState(false);
 
- 
-
+  const token = localStorage.getItem('authToken');
+  if (!token) {
+    window.location.href = "../login";
+  }
 
   const handleFavoriteClick = async () => {
     try {

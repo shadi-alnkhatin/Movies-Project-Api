@@ -27,7 +27,7 @@ function App() {
 
   return (
       <div>
-        <Nav></Nav>
+        {showSidebar&&<Nav/>}
           <main>
           {showSidebar && sidebar} {/* Sidebar stays static */}
           {showHome && <Home />}
@@ -39,6 +39,7 @@ function App() {
                   <Route path="/filter/:id" element={<MoviesFilterResults/>} />
                   <Route path="/search/:searchText" element={<SearchResult/>} />
                   <Route path="/profile" element={<ProfilePage />} />
+                  <Route path="/change-password" element={<ProfilePass />} />
 
           </Routes>
           </main>

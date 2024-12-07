@@ -9,7 +9,16 @@ const SidebarList = ({ title, children }) => (
     </div>
 );
 
-
+const handelLogout =()=>{
+  localStorage.removeItem('authToken');
+  localStorage.removeItem('name');
+}
+const isLogin=()=>{
+ if(localStorage.getItem('authToken'))
+  return true;
+ else
+ return false;
+}
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -108,32 +117,23 @@ const Sidebar = () => {
               Watch Later List
             </a>
           </SidebarList>
-
+          {isLogin()&&(
           <SidebarList title="Account">
-            {isLoggedIn ? (
-              <>
-                <a
-                  href="/profile/edit"
-                  className={`sidebar-link ${isActive('/profile/edit') ? 'active' : ''}`}
-                >
-                  Profile
-                </a>
-                <form method="POST" action="/logout">
-                  <button
-                    type="submit"
-                    className={`sidebar-link ${isActive('/logout') ? 'active' : ''}`}
-                  >
-                    Logout
-                  </button>
-                </form>
-              </>
-            ) : (
-              <>
-                <Link to="/login" className="sidebar-link">Login</Link>
-                <Link to="/register" className="sidebar-link">Register</Link>
-              </>
-            )}
-          </SidebarList>
+            <a
+              href="/profile"
+              className={`sidebar-link ${isActive('/profile') ? 'active' : ''}`}
+            >
+              Profile
+            </a>
+            <form method="POST" action="/logout">
+              <button
+                onClick={handelLogout}
+                className={`sidebar-link ${isActive('/logout') ? 'active' : ''}`}
+              >
+                Logout
+              </button>
+            </form>
+          </SidebarList>)}
         </div>
       </nav>
 
