@@ -538,6 +538,118 @@ visibility: visible;
 }
 
 /*-----------------------------------*\
+  #FOOTER
+\*-----------------------------------*/
+
+
+.footer {
+  background-color: var(--background);
+  color: #fff;
+  padding: 25px;
+  text-align: center;
+ 
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: space-between; /* Center the contents horizontally */
+  align-items: center;     /* Center the contents vertically */
+  gap: 30px;               /* Space between the footer elements */
+  max-width: 1200px;
+  margin: 0 50px;
+  flex-wrap: wrap;         /* Ensure the content wraps on smaller screens */
+  text-align: center;      /* Align text in the center for the whole container */
+}
+
+/* Logo Section */
+.footer-logo img {
+  max-width: 150px;
+  margin-bottom: 1px;
+}
+
+.footer-logo-text {
+  font-size: 18px;
+  color: #fff;
+  margin-top: 10px;
+}
+
+/* Links Section */
+.footer-links {
+  margin: 20px 0;
+}
+
+.footer-links-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: var(--primary-variant);
+  text-decoration: none;
+}
+
+/* Contact Section */
+.footer-contact {
+  margin: 20px 0;
+  text-align: right;
+  font-size: 14px;
+  color: #fff;
+}
+
+.footer-contact p {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.footer-contact .social-icon {
+  margin-right: 8px;
+  color: var(--primary-variant);
+  font-size: 18px;
+}
+
+/* Social Media Section */
+.footer-social {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-icon {
+  color: #fff;
+  font-size: 24px;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: var(--primary-variant);
+}
+
+/* Copyright Section */
+.footer-copyright {
+  font-size: 12px;
+  margin-top: 15px;
+  color: #aaa;
+}
+
+.footer-gap{
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+}
+
+/*-----------------------------------*\
   #HOMEPAGE
 \*-----------------------------------*/
 
@@ -680,6 +792,98 @@ visibility: visible;
 }
 
 /*-----------------------------------*\
+  #CONTACTS
+\*-----------------------------------*/
+
+/* 
+.contact-page {
+  border-radius: var(--radius-16);
+  padding: 20px;
+  box-shadow: var(--shadow-1);
+  width: 100%;
+  max-width: 800px;
+
+}
+
+.contact-container {
+  background-color: var(--surface);
+  padding: 30px;
+  border-radius: var(--radius-8);
+  box-shadow: var(--shadow-2);
+}
+
+h2 {
+  color: var(--on-background);
+  font-size: var(--fs-title);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+input,
+textarea {
+  width: 48%;
+  padding: 12px;
+  margin: 6px 0;
+  border-radius: var(--radius-8);
+  border: 1px solid var(--primary);
+  font-size: var(--fs-body);
+  color: var(--on-surface);
+  background-color: transparent;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+  min-height: 150px;
+}
+
+button.submit-button {
+  width: 100%;
+  background-color: var(--primary);
+  color: var(--white);
+  font-size: var(--fs-button);
+  padding: 12px;
+  border: none;
+  border-radius: var(--radius-8);
+  cursor: pointer;
+  transition: background-color var(--transition-short);
+}
+
+button.submit-button:hover {
+  background-color: var(--primary-variant);
+}
+
+.submission-message {
+  margin-top: 20px;
+  text-align: center;
+  color: green;
+  font-size: var(--fs-body);
+}
+
+.footer-contact {
+  margin-top: 30px;
+  color: var(--on-surface);
+}
+
+.footer-contact p {
+  font-size: var(--fs-body);
+  display: flex;
+  align-items: center;
+}
+
+.footer-contact p svg {
+  margin-right: 10px;
+}
+
+ */
+
+/*-----------------------------------*\
   #HEADER
 \*-----------------------------------*/
 
@@ -791,6 +995,7 @@ visibility: visible;
   .container {
     height: 100vh;
     border-top-left-radius: var(--radius-36);
+    border-bottom-left-radius: var(--radius-36);
   }
 
 

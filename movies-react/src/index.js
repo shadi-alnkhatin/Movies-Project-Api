@@ -4,7 +4,7 @@ import App from "./App";
 import "./assets/css/style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './components/Sidebar/Sidebar.css';
-import ResultSearch from './ResultSearch/ResultSearch';
+// import ResultSearch from './ResultSearch/ResultSearch';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
