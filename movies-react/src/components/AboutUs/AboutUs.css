@@ -1,9 +1,6 @@
 body, html {
-    height: 100%;
-    margin: 0;
+   
     background-color: #121826;
-    background-size: cover;
-    background-attachment: fixed;
     color: #f0f0f0;
     font-family: 'Roboto', sans-serif;
 }
@@ -91,7 +88,7 @@ body, html {
     color: #9aaab8;
     box-shadow: 0 8px 20px #fdfdfd6d;
 }
-.card {
+.cart {
     border: none;
     background: rgba(26, 115, 232, 0.3); 
     color: #d4d7da;
@@ -106,13 +103,13 @@ body, html {
     box-shadow: 0 8px 20px #1c2733;
 }
 
-.card:hover {
+.cart:hover {
     transform: translateY(-10px) scale(1.1); 
     box-shadow: 0 8px 20px #bec8cfa1;
     border: 1px solid #bec8cf;
 }
 
-.card::before {
+.cart::before {
     content: '';
     position: absolute;
     top: 0;
@@ -126,11 +123,11 @@ body, html {
     pointer-events: none;
 }
 
-.card:hover::before {
+.cart:hover::before {
     opacity: 1;
 }
 
-.card-title {
+.cart-title {
     font-size: 2rem;
     font-weight: bold;
     color: #d4d7da;
@@ -172,17 +169,17 @@ body, html {
     background: linear-gradient(to right, rgba(28, 39, 51, 0.6), #1b232c);
 }
 
-.card-row {
+.cart-row {
     display: flex;
     justify-content: space-between;
     overflow-x: auto;
     text-align: center; 
 }
 
-.card-row::-webkit-scrollbar {
+.cart-row::-webkit-scrollbar {
     display: none;
 }
 
-.card-row .card {
+.cart-row .cart {
     margin-bottom: 20px;
 }

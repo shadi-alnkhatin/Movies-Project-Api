@@ -89,62 +89,72 @@ const Register = () => {
 
   return (
     <div className="register">
-      <div className="card">
-        <div className="right">
-          <h1>Register</h1>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-            {validationErrors.name && (
-              <p className="error">{validationErrors.name}</p>
-            )}
+    <div className="card2">
+      <div className="right">
+        <h1>Register</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+          {validationErrors.name && (
+            <p className="error">{validationErrors.name}</p>
+          )}
 
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-            {validationErrors.email && (
-              <p className="error">{validationErrors.email}</p>
-            )}
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          {validationErrors.email && (
+            <p className="error">{validationErrors.email}</p>
+          )}
 
-            <input
-              type="password"
-              placeholder="Password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-            />
-            {validationErrors.password && (
-              <p className="error">{validationErrors.password}</p>
-            )}
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          {validationErrors.password && (
+            <p className="error">{validationErrors.password}</p>
+          )}
 
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              name="c_password"
-              value={formData.c_password}
-              onChange={handleChange}
-            />
-            {validationErrors.c_password && (
-              <p className="error">{validationErrors.c_password}</p>
-            )}
-
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            name="c_password"
+            value={formData.c_password}
+            onChange={handleChange}
+          />
+          {validationErrors.c_password && (
+            <p className="error">{validationErrors.c_password}</p>
+          )}
+           {error && <p style={{  color: '#dc3545'}}>{error}</p>}
+          <div className="btn-register"> 
             <button type="submit" disabled={isLoading}>
-              {isLoading ? "Registering..." : "Register"}
+               {isLoading ? "Registering..." : "Register"}
             </button>
-          </form>
-          {error && <p className="error">{error}</p>}
-        </div>
+          </div>
+          <div className="text-center mt-3">
+          <p style={{color:'#121826'}}>
+        Do you already have an account?{" "}
+          <Link to="/login" className="text-primary">
+          Login here
+          </Link>
+        </p>
+      </div>
+        </form>
+       
       </div>
     </div>
+  </div>
   );
 };
 

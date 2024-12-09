@@ -42,10 +42,10 @@ export default function MoviesFilterResults() {
     );
 
   return (
-    <div className="movies-list">
+    <div className='container'>
+      <div className="movies-list " style={{marginLeft:'20px'}}>
             <br /> <br />
-      <h2 className='title'>{genreName}</h2>
-      <br />
+          <h2 className='title' style={{fontSize:'30px'}}>{genreName}</h2>      <br />
       <div className="grid-list">
         {moviesByGenre.length > 0 ? (
           moviesByGenre.map((movie) => (
@@ -55,6 +55,8 @@ export default function MoviesFilterResults() {
           <p>No Movies Found!</p>
         )}
       </div>
+      <br />
+    </div>
     </div>
   );
 }

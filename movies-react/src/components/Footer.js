@@ -22,8 +22,8 @@ const Footer = () => {
         <div className="footer-links">
           <ul className="footer-links-list">
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/AboutUs">AboutUs</Link></li>
-            <li><Link to="/TermsAndConditions">TermsAndConditions</Link></li>
+            <li><Link to="/AboutUs">About Us</Link></li>
+            <li><Link to="/TermsAndConditions">Terms And Conditions</Link></li>
             <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
@@ -42,7 +42,7 @@ const Footer = () => {
         </div>
          {/* Copyright */}
       <p className="footer-copyright">
-        © {currentYear} Your Website Name. All Rights Reserved.
+        © {currentYear} Go Movies. All Rights Reserved.
       </p>
         </div>
 
@@ -53,9 +53,9 @@ const Footer = () => {
           <p>Get in touch now</p>
           <br />
 
-          <p><FaPhone className="social-icon" /> +123-456-7890</p>
+          <p><FaPhone className="social-icon" /> +962788136963</p>
          
-          <p><FaEnvelope className="social-icon" />info@yourwebsite.com</p>
+          <p><FaEnvelope className="social-icon" />info@GoMovies.com</p>
         </div>
 
 

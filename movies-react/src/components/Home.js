@@ -102,7 +102,7 @@ function Home() {
         </div>
 
         <br />
-        <h2 className="my-5">Action</h2>
+        <h2 className="my-5 mx-3" style={{fontSize:'30px' ,fontWeight:'bold'}}>Action</h2>
         <div className="slider-list">
           <div className="slider-inner">
             {moviesByGenre.action.map((movie) => (
@@ -112,7 +112,7 @@ function Home() {
         </div>
 
         <br />
-        <h2 className="my-5">Romance</h2>
+        <h2 className="my-5 mx-3" style={{fontSize:'30px',fontWeight:'bold'}}>Romance</h2>
         <div className="slider-list">
           <div className="slider-inner">
             {moviesByGenre.romance.map((movie) => (
@@ -122,7 +122,7 @@ function Home() {
         </div>
 
         <br />
-        <h2 className="my-5">Drama</h2>
+        <h2 className="my-5 mx-3" style={{fontSize:'30px',fontWeight:'bold'}}>Drama</h2>
         <div className="slider-list">
           <div className="slider-inner">
             {moviesByGenre.drama.map((movie) => (

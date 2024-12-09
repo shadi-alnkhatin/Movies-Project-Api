@@ -70,7 +70,7 @@ const Login = () => {
 
   return (
     <div className="register">
-    <div className="card">
+    <div className="card2">
       <div className="right">
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
@@ -89,20 +89,27 @@ const Login = () => {
             name="password"
             value={formData.password}
             onChange={handleChange}
-          />
+          /> {message && (
+            <p
+              style={{ color: message === "Login successful!" ? "#28a745" : "#dc3545", fontSize: '18px'
+              }} 
+              className={`error ${message === "Login successful!" ? "success" : ""}`}
+            >
+              {message}
+            </p>
+          )}
           {errors.password && <p className="error">{errors.password[0]}</p>}
-  
-          <button type="submit" disabled={isLoading}>
+          <div  className="btn-register" >
+          <button  type="submit" disabled={isLoading}>
             {isLoading ? "Logging in..." : "Login"}
           </button>
+          </div>
         </form>
-        {message && (
-          <p className={`error ${message === "Login successful!" ? "success" : ""}`}>
-            {message}
-          </p>
-        )}
+
+       
+
         <div className="text-center mt-3">
-          <p>
+          <p style={{color:'#121826'}}>
             Don't have an account?{" "}
             <Link to="/register" className="text-primary">
               Register here

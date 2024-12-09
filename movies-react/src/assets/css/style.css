@@ -461,20 +461,24 @@ body {
 /*-----------------------------------*\
   #SIDEBAR
 \*-----------------------------------*/
-.sidebar{
-position: absolute;
-background-color: var(--background);
-top: 96px;
-bottom: 0;
-left: -340px;
-max-width: 340px;
-width: 100%;
-border-block-start: 1px solid var(--banner-background);
-overflow-y: overlay;
-z-index: 4;
-visibility: hidden;
-transition: var(--transition-long);
+.sidebar {
+  position: absolute;
+  background-color: #121826;
+  top: 96px;
+  bottom: 0;
+  left: -340px;
+  max-width: 340px;
+  width: 100%;
+  overflow-y: overlay;
+  z-index: 4;
+  visibility: hidden;
+  transition: var(--transition-long);
+  
+  /* Neon border effect */
+  border-right: 1px solid #2b3a4a; /* Main border color */
+  box-shadow: 0 0 4px #2b3a4a, 0 0 4px #2b3a4a, 0 0 4px #2b3a4a;
 }
+
 
 .sidebar.active {
 transform: translateX(340px);
@@ -511,6 +515,9 @@ visibility: visible;
 }
 
 .sidebar-link:is(:hover, :focus-visible) {
+  color: var(--on-background);
+}
+.sidebar-link.active{
   color: var(--on-background);
 }
 
@@ -658,6 +665,39 @@ visibility: visible;
   justify-content: space-between; 
   align-items: center; 
 }
+@media (max-width: 768px) {
+  .footer-wrapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-links-list {
+    flex-direction: column;
+  }
+
+  .footer-contact {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-logo img {
+    max-width: 120px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+  }
+
+  .social-icon {
+    font-size: 20px;
+  }
+
+  .footer-contact .social-icon {
+    font-size: 16px;
+  }
+}
 
 /*-----------------------------------*\
   #HOMEPAGE
@@ -665,7 +705,7 @@ visibility: visible;
 
 .container {
   position: relative;
-  background-color: var(--surface);
+  background-color: #121826;
   color: var(--on-surface);
   padding: 24px 20px 48px;
   overflow-y:scroll;
@@ -894,10 +934,12 @@ visibility: visible;
 
 .text-primary {
   color: #007bff;
+  text-decoration: none;
+  font-size: large;
 }
 
 .text-primary:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 
@@ -1111,7 +1153,7 @@ visibility: visible;
   .search-btn {
     display: none;
   }
-
+ 
 
   /* .carousel-inner{
     height: 100px;
@@ -1155,8 +1197,8 @@ visibility: visible;
     padding: 28px 56px;
   }
   .sidebar-toggle-btn{
-    visibility: hidden;
-  }
+    display: none !important;  }
+ 
 
   .logo img {
    height: 100%;
@@ -1191,8 +1233,6 @@ visibility: visible;
 
   .container {
     height: 100vh;
-    border-top-left-radius: var(--radius-36);
-    border-bottom-left-radius: var(--radius-36);
   }
 
 
@@ -1200,6 +1240,7 @@ visibility: visible;
     top: 105px;
     padding: 60px;
   }
+ 
 
   /* MOVIE DETAIL PAGE */
   .backdrop-image {
@@ -1223,13 +1264,15 @@ visibility: visible;
 }
 /* Custom Header Styles */
 .custom-header {
-  background-color: var(--background);
+
+  background-color: #121826;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
   position: relative;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 /* Logo styling */
@@ -1315,6 +1358,18 @@ visibility: visible;
   .search-input {
     font-size: 14px;
   }
+  .movie-card {
+    width: 400px;
+    margin: auto;
+  }
+  .movie-card .card-banner {
+    width: 100%;
+    height: 300px;
+  }
+  .grid-list{
+    grid-template-columns: 1fr;
+    
+   }
 }
 
 @media (max-width: 480px) {
@@ -1325,4 +1380,8 @@ visibility: visible;
   .search-input {
     width: 100%;
   }
+}
+
+.side-contact{
+  font-size: 20px;
 }

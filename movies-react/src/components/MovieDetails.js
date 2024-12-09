@@ -133,7 +133,7 @@ export default function MovieDetails() {
                 <div className="detail-box">
                   <div className="detail-content">
                     <div className='fav-details'>
-                    <h1 className="heading">{movie.title}</h1> 
+                    <h1 className="heading" style={{fontSize:'30px'}}>{movie.title}</h1> 
         <div >
         <FavoriteButton
           isFavorited={isFavorite}
@@ -160,7 +160,7 @@ export default function MovieDetails() {
                        
                     </div>
  {/* Favorite Button */}
-      
+      <br/>
                     <p className="genre">
                         {
                             genres.map((genre, index) => {
@@ -180,7 +180,7 @@ export default function MovieDetails() {
                   <div className="slider-list">
 
                     <div className="slider-inner">
-                        <iframe width="700" height="500" src={movie.trailer_url}
+                        <iframe width="600" height="500" src={movie.trailer_url}
                         frameborder="0" allowfullscreen="1" title="Trailer" className="" loading="lazy"></iframe>
                     </div>
 

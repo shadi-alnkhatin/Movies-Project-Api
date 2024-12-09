@@ -1,9 +1,12 @@
 import React from 'react';
 import './AboutUs.css';
+import Nav from '../layouts/nav';
 
 const AboutUs = () => {
   return (
-    <section className="about-section container">
+   <div>
+    <Nav/>
+     <section className="about-section container">
       <div className="row">
         {/* Text Section */}
         <div className="col-md-6">
@@ -14,7 +17,7 @@ const AboutUs = () => {
               Our platform aims to be your first source of inspiration, discovering the finest films and exploring
               everything new in the world of cinema, presented in a style worthy of every big-screen lover.
             </p>
-            <a href="#" id="Contact-a" className="btn btn-light">
+            <a href="./contact" id="Contact-a" className="btn btn-light" style={{fontSize:'18px'}}>
               Contact Us
             </a>
           </div>
@@ -22,7 +25,7 @@ const AboutUs = () => {
 
         <div className="col-md-6">
           <h2 className="team-title">Our Team</h2>
-          <div className="card-row row">
+          <div className="cart-row row">
             <TeamMember
               name="Shadi Alnkhatin"
               role="Scrum Master"
@@ -36,7 +39,7 @@ const AboutUs = () => {
               github="https://github.com/Anas-Esbitan"
             />
           </div>
-          <div className="card-row row">
+          <div className="cart-row row">
             <TeamMember
               name="Moawiah Eqailan"
               role="Web Developer"
@@ -50,7 +53,7 @@ const AboutUs = () => {
               github="https://github.com/ak-AYA"
             />
           </div>
-          <div className="card-row row">
+          <div className="cart-row row">
             <TeamMember
               name="Sujood Aljundi"
               role="Web Developer"
@@ -60,20 +63,21 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-      <a href="#" id="Home-a" style={{ color: '#bec8cf', textDecoration: 'none' }}>
+      <a href="#" id="Home-a" style={{ color: '#bec8cf', textDecoration: 'none' , fontSize:'16px'}}>
         <i className="fas fa-arrow-left"></i> Back To Home
       </a>
     </section>
+   </div>
   );
 };
 
 const TeamMember = ({ name, role, linkedin, github }) => {
   return (
-    <div className="col-md-6 mb-2">
-      <div className="card slide-in">
-        <div className="card-body">
-          <h5 className="card-title">{name}</h5>
-          <p className="card-text">{role}</p>
+    <div className="col-md-6 mb-2 ">
+      <div className="cart slide-in p-3">
+        <div className="cart-body">
+          <h5 className="cart-title">{name}</h5>
+          <p className="cart-text">{role}</p>
           <div className="social-icons">
             <a href={linkedin} target="_blank" rel="noopener noreferrer">
               <i className="fab fa-linkedin"></i>

@@ -28,7 +28,7 @@ const SearchResult = () => {
   }
 
   return (
-    <div className="genre-list movie-list">
+    <div className="genre-list movie-list" style={{marginLeft:'20px'}}>
       <div id="start" className="title-wrapper">
         <br />
         <h2 className="title">Search Result</h2>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import Nav from "./layouts/nav";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -80,7 +81,9 @@ const Contact = () => {
     };
 
     return (
-        <div className="contact-section">
+       <div>
+        <Nav/>
+         <div className="contact-section">
             <div className="side-contact">
                 <p>
                     Whether you need <span className="highlight-text">recommendations, support, </span> 
@@ -153,6 +156,7 @@ const Contact = () => {
                 </form>
             </div>
         </div>
+       </div>
     );
 };
 

@@ -4,7 +4,7 @@ import React from "react";
 const TermsAndConditions = () => {
   return (
     <div className="contact-section-sub">
-      <div className="contact-card-sub">
+      <div className="contact-card-sub text-dark">
         <h2 className="contact-title">Go-Movies Terms and Conditions</h2>
         <p>Last Updated: 03-10-2024</p>
         <hr />
@@ -44,7 +44,7 @@ const TermsAndConditions = () => {
         <h4>Contact Us</h4>
         <p>
           If you have any questions about these terms, contact us at{" "}
-          <a href="mailto:moawiah.eqailan@gmail.com">moawiah.eqailan@gmail.com</a>
+          <a href="./contact">Contact</a>
         </p>
         <p style={{ color: "#1259c7" }}>
           By using Go-Movies, you acknowledge that you have read and agree to

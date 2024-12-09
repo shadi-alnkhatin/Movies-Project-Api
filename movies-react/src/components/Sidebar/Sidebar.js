@@ -9,59 +9,52 @@ const SidebarList = ({ title, children }) => (
     </div>
 );
 
-const handelLogout =()=>{
+const handelLogout = () => {
   localStorage.removeItem('authToken');
   localStorage.removeItem('name');
   window.location.href='../';
 }
-const isLogin=()=>{
- if(localStorage.getItem('authToken'))
-  return true;
- else
- return false;
+
+const isLogin = () => {
+  if(localStorage.getItem('authToken'))
+    return true;
+  else
+    return false;
 }
 
-const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const Sidebar = ({ isOpen, toggleSidebar }) => {
   const location = useLocation(); // Get the current location
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token); 
   }, []);
 
-
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
-
   const isActive = (path) => location.pathname === path; 
 
   return (
     <div>
-      <button
-  className="sidebar-toggle-btn"
-  onClick={toggleSidebar}
-  style={{
-    backgroundColor: isOpen ? '#2b3a4a' : '#2b3a4a', 
-    color:  'white' ,
-    display: 'flex',
-    justifyContent: isOpen ? 'flex-end' : 'flex-start',
-    alignItems: 'center',
-    padding: '4px',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    zIndex:'100',
-    transition: 'background-color 0.3s ease, left 0.3s ease', 
-    position: 'absolute', 
-    left: isOpen ? 'calc(100% - 120px)' : '10px', 
-  }}
->
-  {isOpen ? '← ' : '→ '}
-</button>
+      {/* <button
+        className="sidebar-toggle-btn"
+        onClick={toggleSidebar}
+        style={{
+          backgroundColor: isOpen ? '#2b3a4a' : '#2b3a4a', 
+          color: 'white',
+          display: 'flex',
+          justifyContent: isOpen ? 'flex-end' : 'flex-start',
+          alignItems: 'center',
+          padding: '4px',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          zIndex: '100',
+          transition: 'background-color 0.3s ease, left 0.3s ease', 
+          position: 'absolute', 
+          left: isOpen ? 'calc(100% - 120px)' : '10px', 
+        }}
+      >
+        {isOpen ? '← ' : '→ '}
+      </button> */}
       <nav className={`sidebar ${isOpen ? 'active' : ''}`} id="sidebar">
         <div className="sidebar-inner">
           <SidebarList title="Genre">
@@ -101,39 +94,37 @@ const Sidebar = () => {
             >
               Comedy
             </a>
-            <a
-              href="/filter/7"
-              className={`sidebar-link ${isActive('/filter/7') ? 'active' : ''}`}
-            >
-              Crime
-            </a>
+            
           </SidebarList>
 
-          {isLogin()&&( <SidebarList>
-            <a
-              href="/favorites"
-              className={`sidebar-link ${isActive('/favorites') ? 'active' : ''}`}
-              style={{ color: 'var(--primary-variant)' }}
-            >
-              Watch Later List
-            </a>
-          </SidebarList>)}
-          {isLogin()&&(
-          <SidebarList title="Account">
-            <a
-              href="/profile"
-              className={`sidebar-link ${isActive('/profile') ? 'active' : ''}`}
-            >
-              Profile
-            </a>
-           
+          {isLogin() && (
+            <SidebarList>
+              <a
+                href="/favorites"
+                className={`sidebar-link ${isActive('/favorites') ? 'active' : ''}`}
+                style={{ color: 'var(--primary-variant)' }}
+              >
+                Watch Later List
+              </a>
+            </SidebarList>
+          )}
+
+          {isLogin() && (
+            <SidebarList title="Account">
+              <a
+                href="/profile"
+                className={`sidebar-link ${isActive('/profile') ? 'active' : ''}`}
+              >
+                Profile
+              </a>
               <button
                 onClick={handelLogout}
                 className={`sidebar-link ${isActive('/logout') ? 'active' : ''}`}
               >
                 Logout
               </button>
-          </SidebarList>)}
+            </SidebarList>
+          )}
         </div>
       </nav>
 
